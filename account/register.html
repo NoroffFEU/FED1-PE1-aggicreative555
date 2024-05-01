@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Registration</title>
-  <script src="register.js" defer></script>
+  <script src="/js/register.js" defer></script>
 </head>
 <body>
     <header>
@@ -15,11 +15,11 @@
             <h2>User Registration</h2>
             <form id="registerForm">
               <label for="email">Email</label>
-              <input type="text" id="email" name="email" required><br>
+              <input type="text" name=email id="registerEmail" name="email" required><br>
               <label for="username">Username</label>
-              <input type="text" id="username" name="username" required><br>
+              <input type="text" name=username id="registerUsername" name="username" required><br>
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" required><br>
+              <input type="password" name=password id="registerPassword" name="password" required><br>
               <button type="submit">Register</button>
             </form>
             <a href="/account/login.html">Login</a>
