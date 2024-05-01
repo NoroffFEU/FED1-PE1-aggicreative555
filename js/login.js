@@ -1,3 +1,9 @@
+
+
+// access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWdnaV8xMjMiLCJlbWFpbCI6ImFnZ2kuMTIzQHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzE0Mzk0NTU3fQ.R4Bz9PZ4lbIdxO6n7bDEyCwvStDeq42yzdeJY1rYCS8
+
+const API_BASE_URL = 'https://v2.api.noroff.dev';
+
 async function loginUser(url, userData) {
     try {
         const postData = {
