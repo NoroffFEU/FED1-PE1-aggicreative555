@@ -113,6 +113,22 @@ function hashPassword(password) {
 // }
 
 const API_BASE_URL = 'https://v2.api.noroff.dev';
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const registerEmail = document.getElementById('registerEmail').value;
+    const registerUsername = document.getElementById('registerUsername').value;
+    const registerPassword = document.getElementById('registerPassword').value;
+    
+    const userRegister = {
+        email: registerEmail, 
+        username: registerUsername, 
+        password: registerPassword 
+    };
+    
+    await registerUser(registerUrl, userRegister);
+});
+
 async function registerUser(url, userData) {
     try {
         const postData = {
