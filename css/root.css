@@ -46,3 +46,61 @@
 }
 
 
+
+
+/* UTILITY CLASSES */
+
+
+body {
+    font-family: var(--ff-primary);
+    color: var(--clr-black);
+}
+
+.title {
+    font-size: var(--fs-XL);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+}
+
+.heading-1 {
+    font-size: var(--fs-L);
+    font-weight: var(--fw-bold);
+}
+
+.heading-2 {
+    font-size: var(--fs-M);
+    font-weight: var(--fw-semi-bold);
+    
+}
+
+.heading-3 {
+    font-size: var(--fs-M);
+    font-weight: var(--fw-regular);
+}
+
+.caption { 
+    font-size: var(--fs-XS); 
+    font-weight: var(--fw-regular);
+    font-family: var(--ff-body);
+}
+
+p, .body {
+    font-size: var(--fs-S);
+    font-weight: var(--fw-regular);
+    line-height: 170%;
+}
+
+.all-caps {
+    text-transform: uppercase;
+}
+
+.centered {
+    text-align: center;
+}
+
+.txt-color-grey {
+    color: var(--clr-black);
+}
+
+
+/* UTILITY CLASSES */
