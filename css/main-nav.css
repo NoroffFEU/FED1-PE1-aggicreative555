@@ -1,0 +1,127 @@
+
+header {
+    position: fixed;
+    background: var(--clr-white);
+    padding-top: 1rem;
+    width: 100vw;
+    z-index: 999;
+    top: 0;
+    left: 0;
+}
+
+#activeLink {
+    text-decoration: underline;
+}
+
+.nav-left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.nav-wrapper {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    align-items: center;
+    width: 100vw;
+    margin: 1rem 2rem;
+    gap: 2rem;
+}
+
+.nav-center {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+    gap: 3rem;
+}
+
+.nav-center li, .nav-right li {
+    display: inline-block;
+    padding: 1rem;    
+}
+
+.nav-right {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 1rem;
+    gap: 1rem;
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 1rem 2rem;
+    gap: 2rem;
+}
+
+.logo img {
+    object-fit: contain;
+    width: auto;
+    max-height: 6.25rem;
+}
+
+.nav-link, .current-page {
+    font-size: var(--fs-S);
+    font-weight: var(--fw-regular);
+    color: var(--clr-black-900);
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative; 
+
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);    
+}
+
+.current-page::after {
+    content: '';
+    position:absolute;
+    left:0;
+    top:1.5rem;
+    width: 1rem;
+    height:.18rem;
+    /* background-color: var(--clr-accent-lilac); */
+    border-radius: 0.8rem; 
+
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left:0;
+    top:1.5rem;
+    width:100%;
+    height:.18rem;
+    /* background-color: var(--clr-accent-lilac); */
+    border-radius: 0.8rem; 
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform 0.3s ease-in-out;    
+}
+
+.nav-toggle {
+    cursor: pointer;
+    display: none;
+    padding: 1rem;
+}
+
+.checkbox {
+    display: none;
+}
+
+#close-icon {
+    display:none;
+}
