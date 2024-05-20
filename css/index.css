@@ -1,3 +1,7 @@
+@import url(../css/root.css);
+@import url(../css/main-nav.css);
+@import url(../css/footer.css);
+
 .carousel {
     position: relative;
     /* display: flex;
