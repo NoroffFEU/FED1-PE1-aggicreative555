@@ -23,3 +23,51 @@
     <!-- ICONS -->
     
 </head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <section>
+            <div class="form-container">
+            <h1 class="heading-2"><span class="bold">Welcome</span> to HotView Labs!</h1>
+            <form class="register-form">
+                <div class="form-item">
+                    <label for="email" class="body bold">Email</label>
+                    <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    class="email"
+                    pattern="([a-z0-9._+-])+@([a-z])\.([a-z]){2,4}"
+                    placeholder="name@email.com"
+                    title="Enter a valid email address"
+                    autocomplete="email"
+                    required/>
+                </div>
+                <div class="form-item">
+                  <label for="password" class="body bold">Password</label>
+                  <input
+                  type="text"
+                  id="password"
+                  name="password"
+                  class="password"
+                  pattern="([a-z0-9._+-])+@([a-z])\.([a-z]){2,4}"
+                  placeholder="********"
+                  title="Create a password"
+                  autocomplete="password"
+                  required/>
+                </div>
+                <div class="flex-S"><button type="submit" class="flex-2 btn-primary ">Login</button></div>
+            </form>
+            <div class="flex-S centered">
+                <h3 class="heading-3">Not on HotView Labs yet?</h3>
+                <a class="flex-2 btn-secondary">Register</a>
+            </div>
+                    
+          </section>
+    </main>
+    <footer>
+
+    </footer>
+</body>

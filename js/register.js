@@ -1,85 +1,121 @@
-const http = require('http');
-const bcrypt = require('bcryptjs');
-const fs = require('fs');
+// const http = require('http');
+// const bcrypt = require('bcryptjs');
+// const fs = require('fs');
 
-document.getElementById('registerForm').addEventListener('submit', async (e) => {
-    e.preventDefault(); 
+// const server = http.createServer((req, res) => {
+//     res.writeHead(200, {'Content-Type': 'text/plain'});
+//     res.end('Hello, World!\n');
+// });
+
+// const PORT = 3000;
+
+// server.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// });
+
+// const usernameValue = document.getElementById('username').value;
+// const passwordValue = document.getElementById('password').value;
+
+
+// const validateInputs = () => { 
+//     if(usernameValue === '') {
+//         console.log('Username is needed');
+//     } else {
+//         console.log('Success');
+//     }
+
+//     if(passwordValue === '') {
+//         console.log('Password is needed');
+
+//     } else if (passwordValue.length < 8 ) {
+//         console.log('Password must be at least 8 characters')
+//     } else {
+//         console.log('Success');
+//     }
+
+//     return true;
+// }
+
+// document.getElementById('registerForm').addEventListener('submit', async (e) => {
+//     e.preventDefault(); 
+
+//     const validValue = validateInputs(usernameValue, passwordValue);
+//     if (!validValue) {
+//         console.error('Invalid username or password');
+//         return;
+//     }
     
-    const usernameValue = document.getElementById('username').value;
-    const passwordValue = document.getElementById('password').value;
+//     const registerSuccess = await registerUser(usernameValue, passwordValue);
+//     if (registerSuccess) {
+//         console.log('User registered successfully');
+//         localStorage.setItem('token', token);
+//     } else {
+//         console.error('Registration failed');
+//     }
+// });
 
-    const validValue = validateInputs(username, password);
-    if (!valid) {
-        console.error('Invalid username or password');
-        return;
-    }
+// function hashPassword(password) {
+//     const saltRounds = 10;
+//     return bcrypt.hashSync(password, saltRounds);
+// }
+
+// async function registerUser(usernameValue, passwordValue) {
+//     const hashedPassword = hashPassword(passwordValue);
     
-    const registerSuccess = await registerUser(username, password);
-    if (registerSuccess) {
-        console.log('User registered successfully');
-    } else {
-        console.error('Registration failed');
-    }
-});
-
-
-const validateInputs = () => {
+//     const requestBody = {
+//         username: usernameValue,
+//         password: hashedPassword
+//     };
     
-
-    if(usernameValue === '') {
-        console.log('Username is needed');
-    } else {
-        console.log('Success');
-    }
-
-    if(passwordValue === '') {
-        console.log('Password is needed');
-
-    } else if (passwordValue.length < 8 ) {
-        console.log('Password must be at least 8 characters')
-    } else {
-        console.log('Success');
-    }
-}
-
-validateInputs();
-
-
-async function registerUser(username, password) {
-    const hashedPassword = hashPassword(password);
-    
-    const requestBody = {
-        username: username,
-        password: hashedPassword
-    };
-    
-    try {
-        const response = await fetch('/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            
-            body: JSON.stringify(requestBody)
-        });
+//     try {
+//         const response = await fetch('http://127.0.0.1:3000/account/register.html', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify(requestBody)
+//         });
         
-        if (!response.ok) {
-            console.error('Failed to register user:', response.statusText);
-            return false;
-        }
+//         if (!response.ok) {
+//             console.error('Failed to register user:', response.statusText);
+//             return false;
+//         }
         
-        return true;
-    } catch (error) {
-        console.error('Error registering user:', error);
-        return false;
-    }
-}
+//         return true;
+//     } catch (error) {
+//         console.error('Error registering user:', error);
+//         return false;
+//     }
+// }
 
-function hashPassword(password) {
-    const saltRounds = 10;
-    return bcrypt.hashSync(password, saltRounds);
-}
+// async function getToken() {
+//     try {
+//         const response = await fetch('/auth/token', {
+//             method: 'GET',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
 
+//         });
+
+//         if (!response.ok) {
+//             throw new Error('Failed to retrieve token');
+//         }
+
+//         const data = await response.json();
+//         const token = data.token;
+
+//         localStorage.setItem('token', token);
+
+//         console.log('Token retrieved and stored', token);
+//     }
+
+//     catch (error) {
+//         console.error('Error retrieving token:', error);
+//     }
+// }
+
+// getToken();
 
 
 // async function registerUser(username, password) {
@@ -112,7 +148,24 @@ function hashPassword(password) {
 //     return true;
 // }
 
+
+
+
 const API_BASE_URL = 'https://v2.api.noroff.dev';
+
+/**
+
+*@param {string} url
+*@param {any} user
+
+*```js
+
+// registerUser(registerUrl, user);
+
+*```
+*/
+
+
 document.getElementById('registerForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -149,3 +202,4 @@ async function registerUser(url, userData) {
 }
 
 const registerUrl = `${API_BASE_URL}/auth/register`;
+
