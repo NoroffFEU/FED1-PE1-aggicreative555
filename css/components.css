@@ -181,3 +181,56 @@
     max-width: 15.5rem;
 }
 
+/* ROUND BUTTON */
+
+
+/* FORM FIELD */
+
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-S);
+    margin: 3rem 1rem;
+    width: 100%;
+}
+
+.register-form input {
+    max-width: 50rem;
+    min-width: 10rem;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border: 0.15rem solid var(--clr-black);
+    background-color: var(--clr-white);
+    border-radius: 0.5rem;
+
+    color: var(--clr-grey-8);
+    font-size: var(--body);
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--clr-white);
+    margin: 1rem;
+    padding: 2rem;
+    height: auto;
+    width: auto;
+    
+    border-radius: 0.5rem;
+
+}
