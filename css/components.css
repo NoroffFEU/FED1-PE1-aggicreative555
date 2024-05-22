@@ -108,3 +108,76 @@
     width: 100vw;
 }
 
+/* POST L */
+
+/* logged-in */
+
+
+/* BUTTON PRIMARY */
+
+
+.btn-primary {
+    cursor: pointer;
+    box-sizing: border-box;
+    display: flex;
+    width: 15.5rem;
+    padding: 1rem 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; 
+    border-radius: 0.5rem;
+    border: 0;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-button);
+    font-weight: var(--fw-bold);
+
+    background-color: var(--clr-accent-red);
+
+    transition: 0.2s ease-in-out;
+}
+
+
+
+.btn-primary:hover,
+.btn-primary:focus {
+    box-shadow: -12px 12px 0px 0px var(--clr-black);
+}
+
+.btn-container {
+    width: 100%;
+    padding: 1rem;
+}
+
+
+/* BUTTON SECONDARY */
+
+.btn-secondary {
+    cursor: pointer;
+    box-sizing: border-box;
+    display: flex;
+    width: 15.5rem;
+    padding: 1rem 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; 
+    border-radius: 0.5rem;
+    border: 0;
+    background-color: var(--clr-white);
+    border: 0.2rem solid var(--clr-black);
+
+    font-family: var(--ff-primary);
+    font-size: var(--fs-button);
+    font-weight: var(--fw-bold);
+
+    transition: 0.2s ease-in-out;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    box-shadow: -12px 12px 0px 0px var(--clr-accent-red);  
+}
+
+.button-width {
+    max-width: 15.5rem;
+}
+
