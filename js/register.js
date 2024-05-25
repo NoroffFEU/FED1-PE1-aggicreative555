@@ -152,6 +152,7 @@
 
 
 const API_BASE_URL = 'https://v2.api.noroff.dev';
+const registerUrl = `${API_BASE_URL}/auth/register`;
 
 /**
 
@@ -160,29 +161,13 @@ const API_BASE_URL = 'https://v2.api.noroff.dev';
 
 *```js
 
-// registerUser(registerUrl, user);
 
 *```
 */
 
 
-document.getElementById('registerForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const registerEmail = document.getElementById('registerEmail').value;
-    const registerUsername = document.getElementById('registerUsername').value;
-    const registerPassword = document.getElementById('registerPassword').value;
-    
-    const userRegister = {
-        email: registerEmail, 
-        username: registerUsername, 
-        password: registerPassword 
-    };
-    
-    await registerUser(registerUrl, userRegister);
-});
 
-async function registerUser(url, userData) {
+async function registerUser(registerUrl, userData) {
     try {
         const postData = {
             method: 'POST',
@@ -192,14 +177,53 @@ async function registerUser(url, userData) {
             body: JSON.stringify(userData),
         };
         
-        const response = await fetch(url, postData);
-        const json = await response.json();
-        console.log(json);
+        const response = await fetch(registerUrl, postData);
+        // console.log('HTTP response status:', response.status);
+        // console.log('HTTP response:', response);
         
-    } catch (error) {
-        console.error(error);
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error(`HTTP error! status: ${response.status}, text: ${errorText}`);
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const json = await response.json();
+        console.log('Server Response:', json);
+        
+        if (json.success || response.status === 201) {
+            
+            alert('Registration successful! You will be redirected to the login page.');
+            window.location.href = '../account/login.html';
+
+        } else {
+            alert('Registration failed: ' + (json.message || 'No message provided'));
+        }
+        
+        } catch (error) {
+            console.error('Error:', error);
+        alert('An error occurred during registration. Please try again later.');
     }
 }
 
-const registerUrl = `${API_BASE_URL}/auth/register`;
+
+
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const registerName = document.getElementById('registerName').value;
+    const registerEmail = document.getElementById('registerEmail').value;
+    const registerPassword = document.getElementById('registerPassword').value;
+
+    
+    const userRegister = {
+        email: registerEmail, 
+        name: registerName, 
+        password: registerPassword
+    };
+    
+    await registerUser(registerUrl, userRegister);
+
+});
+
+
 
