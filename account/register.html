@@ -6,7 +6,7 @@
     <title>Join HotView Labs!</title>
     <meta name="description" content="Register a new user account here and make inspirational posts!"/>
     <link rel="stylesheet" type="text/css" href="/css/index.css"/> 
-    <script src="/js/register.js" defer></script>
+    <script src="../js/register.js" defer></script>
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/index.css">
@@ -28,7 +28,7 @@
 
     </header>
     <main>
-        <section>
+        <!-- <section>
             <h2>User Registration</h2>
             <form id="registerForm">
               <label for="email">Email</label>
@@ -40,6 +40,53 @@
               <button type="submit">Register</button>
             </form>
             <a href="/account/login.html">Login</a>
+        </section> -->
+        <section>
+          <div class="form-container">
+            <h1 class="heading-2"><span class="bold">Join</span> HotView Labs!</h1>
+            <form class="register-form" id="registerForm">
+              <div class="form-item">
+                  <label for="registerName" class="body bold">Username</label>
+                  <input
+                  type="text"
+                  id="registerName"
+                  name="registerName"
+                  class="name"
+                  title="Enter a valid username. Must include '_' between name and surname"
+                  placeholder="name_surname"
+                  autocomplete="username"
+                  required/>
+              </div>
+              <div class="form-item">
+                  <label for="registerEmail" class="body bold">Email</label>
+                  <input
+                  type="text"
+                  id="registerEmail"
+                  name="registerEmail"
+                  class="email"
+                  placeholder="name@email.com"
+                  title="Enter a valid email address"
+                  autocomplete="email"
+                  required/>
+              </div>
+              <div class="form-item">
+                <label for="registerPassword" class="body bold">Password</label>
+                <input
+                type="text"
+                id="registerPassword"
+                name="registerPassword"
+                class="password"
+                placeholder="********"
+                title="Create a password"
+                required/>
+              </div>
+              <div class="flex-S"><button type="submit" class="flex-2 btn-primary ">Register</button></div>
+            </form>
+            <div class="flex-S centered">
+              <h3 class="heading-3">Already have an account?</h3>
+              <a class="flex-2 btn-secondary" href="../account/login.html">Login</a>
+            </div>
+          </div>
         </section>
     </main>
     <footer>
