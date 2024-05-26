@@ -1,20 +1,18 @@
-import { load } from "../storage.mjs";
+
 import { loginUser } from "../login.mjs";
 import { handleLogin } from "../login.mjs";
+import { authFetch } from "../authFetch.mjs";
 
 const API_BASE_URL = 'https://v2.api.noroff.dev';
 
 const action = "/social/posts";
 
-export async function createPost(id) {
+export async function createPost(postData) {
     const createPostUrl = API_BASE_URL + action;
-    const token = load("token");
+    
 
-    const response = await fetch(createPostUrl, {
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bear ${token}`
-        },
+    const response = await authFetch(createPostUrl, {
+        method: "post",
         body: JSON.stringify(postData)
     })
 
@@ -23,7 +21,3 @@ export async function createPost(id) {
     console.log(post);
 }
 
-createPost ({
-    title: "Example",
-    body: "Example"
-})
