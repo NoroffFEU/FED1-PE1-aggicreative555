@@ -21,6 +21,21 @@
     /* max-width: 47rem; */
     
     border-radius: 0.5rem;
+    flex: 0 0 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.fade {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.active {
+    opacity: 1;
+}
+
+.dot-nav .dot.active {
+    background-color: black;
 }
 
 .slider-container {
@@ -74,6 +89,7 @@
 
 .dot {
     height: 1.5rem;
+    cursor: pointer;
     width: 1.5rem;
     border-radius: 50%;
     background-color: var(--clr-grey-10);
@@ -86,6 +102,7 @@
 
 #arrow-right {
     position: absolute;
+    cursor: pointer;
     top: 50%;
     left: 96%;
 
@@ -93,6 +110,7 @@
 
 #arrow-left {
     position: absolute;
+    cursor: pointer;
     top: 50%;
     left: -1%;
     transform: rotate(180deg);
@@ -100,12 +118,12 @@
 
 /* POST M */
 
-.post-grid-container {
+.post-grid-wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
     height: auto;
     gap: 1rem;
-    width: 100vw;
+    width: 100%;
 }
 
 /* POST L */
@@ -197,8 +215,12 @@
 .register-form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: var(--spacing-S);
     margin: 3rem 1rem;
+    max-width: 47rem;
+    min-width: 15rem;
     width: 100%;
 }
 
@@ -218,6 +240,7 @@
 .form-item {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .form-container {
