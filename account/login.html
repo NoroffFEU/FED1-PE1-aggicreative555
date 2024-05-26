@@ -6,7 +6,7 @@
     <title>Welcome back to HotView Labs! </title>
     <meta name="description" content="Log into your account and get inspired!"/>
     <link rel="stylesheet" type="text/css" href="/css/index.css"/> 
-    <script src="../js/login.js" defer></script>
+    <script src="../js/login.mjs" type="module" defer></script>
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/index.css">
@@ -41,6 +41,7 @@
                     class="email"
                     placeholder="name@email.com"
                     title="Enter a valid email address"
+                    pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
                     autocomplete="email"
                     required/>
                 </div>

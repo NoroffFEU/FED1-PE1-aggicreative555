@@ -44,7 +44,7 @@
         <section>
           <div class="form-container">
             <h1 class="heading-2"><span class="bold">Join</span> HotView Labs!</h1>
-            <form class="register-form" id="registerForm">
+            <form class="register-form" id="registerForm" >
               <div class="form-item">
                   <label for="registerName" class="body bold">Username</label>
                   <input
@@ -52,7 +52,8 @@
                   id="registerName"
                   name="registerName"
                   class="name"
-                  title="Enter a valid username. Must include '_' between name and surname"
+                  title="Enter a valid username. Must include '_' between name and surname. Example: My_Username"
+                  pattern="^[\w]+$"
                   placeholder="name_surname"
                   autocomplete="username"
                   required/>
@@ -66,6 +67,8 @@
                   class="email"
                   placeholder="name@email.com"
                   title="Enter a valid email address"
+                  pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+                  maxlength="20"
                   autocomplete="email"
                   required/>
               </div>
@@ -78,6 +81,7 @@
                 class="password"
                 placeholder="********"
                 title="Create a password"
+                minlength="8"
                 required/>
               </div>
               <div class="flex-S"><button type="submit" class="flex-2 btn-primary ">Register</button></div>

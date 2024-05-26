@@ -1,3 +1,6 @@
+import = as storage from "../storage.mjs";
+import = as create from "../create.mjs";
+
 
 
 // access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWdnaV8xMjMiLCJlbWFpbCI6ImFnZ2kuMTIzQHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzE0Mzk0NTU3fQ.R4Bz9PZ4lbIdxO6n7bDEyCwvStDeq42yzdeJY1rYCS8
@@ -14,7 +17,7 @@ async function loginUser(url, userData) {
             body: JSON.stringify(userData),
         }
 
-        const response = await fetch(url, postData);
+        const response {accessToken, ...user} = await fetch(url, postData);
         const json = await response.json();
         console.log(response);
         console.log(json);
@@ -22,6 +25,9 @@ async function loginUser(url, userData) {
         if (json.success) {
             const accessToken = json.data.accessToken;
             localStorage.setItem('accessToken', accessToken);
+            storage.save("profile", user);
+
+            alert("Login successful!");
         }
 
         window.location.href = '../post/edit.html';
@@ -29,7 +35,7 @@ async function loginUser(url, userData) {
     } else {
         alert("Login failed. User doesn't exist");
         } 
-        
+
     catch(error) {
         console.error(error);
     }
