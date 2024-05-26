@@ -1,5 +1,5 @@
-import = as storage from "../storage.mjs";
-import = as create from "../create.mjs";
+import { load } from "../js/storage.mjs";
+import { createPost } from "../js/posts/create.mjs";
 
 
 
@@ -7,7 +7,7 @@ import = as create from "../create.mjs";
 
 const API_BASE_URL = 'https://v2.api.noroff.dev';
 
-async function loginUser(url, userData) {
+export async function loginUser(url, userData) {
     try {
         const postData = {
             method: 'POST',
@@ -17,27 +17,25 @@ async function loginUser(url, userData) {
             body: JSON.stringify(userData),
         }
 
-        const response {accessToken, ...user} = await fetch(url, postData);
+        const response = await fetch(url, postData);
         const json = await response.json();
+
         console.log(response);
         console.log(json);
 
         if (json.success) {
-            const accessToken = json.data.accessToken;
+            const { accessToken, ...userDetails } = json.data;
             localStorage.setItem('accessToken', accessToken);
-            storage.save("profile", user);
+            storage.save("profile", userDetails);
 
             alert("Login successful!");
+            window.location.href = '../post/edit.html';
+        } else {
+            alert("Login failed. User doesn't exist");
         }
-
-        window.location.href = '../post/edit.html';
-
-    } else {
-        alert("Login failed. User doesn't exist");
-        } 
-
-    catch(error) {
+    } catch (error) {
         console.error(error);
+        alert("An error occurred during login. Please try again.");
     }
 }
 
@@ -63,7 +61,7 @@ async function loginUser(url, userData) {
 //     }
 // }
 
-function handleLogin() {
+export function handleLogin() {
     
     const loginEmail = document.getElementById('loginEmail').value;
     const loginPassword = document.getElementById('loginPassword').value;
@@ -90,3 +88,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 // const postsUrl = `${API_BASE_URL}/auth/login`;
 
 // getWithToken(postsUrl);
+
+createPost ({
+    title: "Example",
+    body: "Example"
+})
