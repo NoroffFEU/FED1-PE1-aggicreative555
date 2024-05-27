@@ -1,5 +1,6 @@
 import { load } from "../js/storage.mjs";
-import { createPost } from "../js/posts/create.mjs";
+import * as storage from "../js/storage.mjs";
+import { updatePost } from "../js/posts/create.mjs";
 
 
 
@@ -23,10 +24,10 @@ export async function loginUser(url, userData) {
         console.log(response);
         console.log(json);
 
-        if (json.success) {
-            const { accessToken, ...userDetails } = json.data;
-            localStorage.setItem('accessToken', accessToken);
-            storage.save("profile", userDetails);
+        if (json.response.status) {
+            const { accessToken, ...userDetails } = await response.json()
+            localStorage.setItem('accessToken', accessToken)
+            save("profile", userDetails)
 
             alert("Login successful!");
             window.location.href = '../post/edit.html';
@@ -61,6 +62,7 @@ export async function loginUser(url, userData) {
 //     }
 // }
 
+
 export function handleLogin() {
     
     const loginEmail = document.getElementById('loginEmail').value;
@@ -71,6 +73,7 @@ export function handleLogin() {
         email: loginEmail, 
         password: loginPassword 
     };
+
 
    
     const loginUrl = `${API_BASE_URL}/auth/login`;
@@ -89,7 +92,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 
 // getWithToken(postsUrl);
 
-createPost ({
+updatePost ({
+    id: "example-id",
     title: "Example",
     body: "Example"
 })
