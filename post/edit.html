@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>See your posts, edit and save.</title>
-    <meta name="description" content="Here, you can view your posts, edit their title and content, and save them for others to see!"/>
-    <link rel="stylesheet" type="text/css" href="/css/index.css"/> 
-    <script src="/js/carousel.js" defer></script>
+    <meta name="description"
+        content="Here, you can view your posts, edit their title and content, and save them for others to see!" />
+    <script type="module" src="/js/posts/populateSingle.mjs" defer></script>
+    <script type="module" src="../js/posts/create.mjs"></script>
+    <script type="module" src="../js/posts/createPost.mjs"></script>
+    <script src="../js/carousel.js" defer></script>
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/index.css">
@@ -19,7 +23,99 @@
     <!-- FONT -->
 
     <!-- ICONS -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!-- ICONS -->
-    
+
 </head>
+
+<body>
+    <header>
+        <div class="nav-wrapper">
+            <div class="nav-left">
+                <a href="../post/index.html" class="logo"><img src="../assets/logo/hotviewlabs-logo.svg" alt="HotView Labs logo"></a>
+                <input type="checkbox" class="checkbox" id="nav-toggle" aria-label="Open or close menu toggle">
+            </div>
+            <label for="nav-toggle" id="nav-toggle" class="nav-toggle" aria-controls="primary-navigation">
+                <span class="material-symbols-outlined size-0" id="menu-icon">menu</span>
+                <span class="material-symbols-outlined size-40" id="close-icon">close</span>
+            </label>    
+            <nav class="nav-center">
+                <ul role="list" class="nav-list" id="primary-navigation">
+                    <li><a class="body bold" id="activeLink" href="../../FED1-PE1-aggicreative555/post/index.html" style="--i:1;">Home</a></li>
+                    <li><a href="#" class="body bold" style="--i:2;">Explore</a></li>
+                    <li><a href="#" class="body bold" style="--i:3;">Search</a></li>
+                </ul>
+            </nav>
+            <nav class="nav-right">
+                <ul role="list" class="nav-list" id="primary-navigation">
+                    <li><a href="#" class="body bold" style="--i:2;">Login</a></li>
+                    <li><a href="#" class="body bold" style="--i:3;">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="createPost">
+            <h1 class="title">Create Post</h1>
+            <div class="form-container">
+                <form class="register-form" id="createPostForm">
+                    <div class="form-item">
+                        <label for="postTitle" class="body bold">Title</label>
+                        <input type="text" id="postTitle" name="postTitle" class="name" title="Enter title for post"
+                            placeholder="Create title" required />
+                    </div>
+                    <div class="form-item">
+                        <label for="postBody" class="body bold">Description</label>
+                        <input type="text" id="postBody" name="postBody" class="name" placeholder="Write a description"
+                            title="Description of post" />
+                    </div>
+                    <div class="form-item">
+                        <label for="postImageUrl" class="body bold">Image link (optional)</label>
+                        <input type="text" id="postImageUrl" name="postImageUrl" class="name" placeholder="img.com/link"
+                            title="place a link" minlength="8" />
+                    </div>
+                    <div class="form-item">
+                        <label for="postImageAlt" class="body bold">Image description (optional)</label>
+                        <input type="text" id="postImageAlt" name="postImageAlt" class="name"
+                            placeholder="Describe picture" title="Write a description for an image" minlength="8" />
+                    </div>
+                    <div class="flex-S"><button type="submit" class="flex-2 btn-primary ">CreatePost</button></div>
+                </form>
+
+            </div>
+    </main>
+
+    <footer class="bg-black">
+        <div class="footer-columns">
+            <div>
+                <div class="footer-container">
+                    <h2 class="all-caps heading-2 white-font bold">Follow Us</h2>
+                    <ul class="social-links" role="list" aria-label="Social links">
+                        <li class="icon"><a href="#" aria-label="Visit our facebook page"><img
+                                    src="../assets/so-me-icons/icon_fb.svg" alt="facebook"></a></li>
+                        <li class="icon"><a href="#" aria-label="Visit our instagram page"><img
+                                    src="../assets/so-me-icons/icon_insta.svg" alt="instagram"></a></li>
+                        <li class="icon"><a href="#" aria-label="Visit our twitter page"><img
+                                    src="../assets/so-me-icons/icon_twitter.svg" alt="twitter"></a></li>
+                        <li class="icon"><a href="#" aria-label="Visit our youtube page"><img
+                                    src="../assets/so-me-icons/icon_youtube.svg" alt="youtube"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <ul aria-label="Links to documents" role="list" class="footer__container-bottom-left">
+                    <li><a href="#" class="body white-font" id="activeLink">Privacy Policy</a></li>
+                    <li><a href="#" class="body white-font" id="activeLink">Terms and Conditons</a></li>
+                </ul>
+                <div>
+                    <p class="white-font caption">Copyright <span class="fw-medium all-caps">HotView Labs&trade;</span>
+                        2023. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

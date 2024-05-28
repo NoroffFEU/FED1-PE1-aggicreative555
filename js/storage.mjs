@@ -5,10 +5,13 @@ export function save (key, value) {
 
 export function load(key) {
     try {
-        const value = localStorage.getItem(key);
-        return JSON.parse(value);
+        // const value = localStorage.getItem(key);
+        // return value;
+        const profile = JSON.parse(load("profile"));
+        console.log(profile);
+
     } catch {
-        return{};
+        return {};
     }
 }
 
