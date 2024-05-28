@@ -89,11 +89,127 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+	const profile = JSON.parse(localStorage.getItem("profile"));
+	console.log(profile);
+	function fetchPosts() {
+		const apiUrl = `https://v2.api.noroff.dev/blog/posts/${profile.name}`;
+		fetch(apiUrl)
+			.then((response) => response.json())
+			.then((data) => {
+				populateCarousel(data.data);
+			})
+			.catch((error) => console.error("Error fetching posts:", error));
+	}
+	fetchPosts();
+	function populateCarousel(posts) {
+		const carouselContainer = document.getElementById("carousel_items");
 
-const hamburger = document.querySelectorAll("#menu-icon");
-const navMenu = document.querySelectorAll("#nav-menu");
+		const postTemplate = carouselContainer.querySelector(".hdcarousel_item");
 
-hamburger.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
-})
+		carouselContainer.innerHTML = "";
+
+		posts.forEach((post) => {
+			const postElement = postTemplate.cloneNode(true);
+			postElement.addEventListener("click", function (e) {
+				window.location.href = `/post/single.html?${post.author.name}&${post.id}`;
+			});
+			postElement.querySelector(".postImg").src = post.media.url;
+			postElement.querySelector(".postImg").alt =
+				post.media.alt || "Post image";
+			postElement.querySelector(".postTitle").textContent = post.title;
+			postElement.querySelector(".updateDate").textContent = new Date(
+				post.updated,
+			).toLocaleDateString();
+			postElement.querySelector(".avatarImg").src = post.author.avatar.url;
+			postElement.querySelector(".avatarImg").alt =
+				post.author.avatar.alt || "Author avatar";
+			postElement.querySelector("#authorName").textContent = post.author.name;
+
+			carouselContainer.appendChild(postElement);
+		});
+
+		new HDCarousel(carouselContainer);
+	}
+});
+
+class HDCarousel {
+	constructor(el) {
+		this.el = el;
+		this.items = Array.from(this.el.getElementsByClassName("post-container"));
+		this.size = 3;
+		this.totalItems = this.items.length;
+		this.currentIndex = 0;
+
+		this.showItems();
+		this.setupEventListeners();
+		this.setupDotNavigation();
+		this.updateDots();
+	}
+
+	showItems() {
+		const offset = (-this.currentIndex * 100) / this.size;
+		this.items.forEach((item, index) => {
+			item.style.transform = `translateX(${offset}%)`;
+		});
+	}
+
+	move(direction) {
+		if (direction === "next") {
+			this.currentIndex = (this.currentIndex + this.size) % this.totalItems;
+		} else if (direction === "prev") {
+			this.currentIndex =
+				(this.currentIndex - this.size + this.totalItems) % this.totalItems;
+		}
+		this.showItems();
+		this.updateDots();
+	}
+
+	setupEventListeners() {
+		const arrowLeft = document.getElementById("arrow-left");
+		const arrowRight = document.getElementById("arrow-right");
+
+		if (arrowLeft && arrowRight) {
+			arrowLeft.addEventListener("click", () => {
+				this.move("prev");
+			});
+			arrowRight.addEventListener("click", () => {
+				this.move("next");
+			});
+		} else {
+			console.log("Arrow elements not found");
+		}
+	}
+
+	setupDotNavigation() {
+		const dots = document.querySelectorAll(".dot-nav .dot");
+		dots.forEach((dot, index) => {
+			dot.addEventListener("click", () => {
+				this.currentIndex = index * this.size;
+				this.showItems();
+				this.updateDots();
+			});
+		});
+	}
+
+	updateDots() {
+		const dots = document.querySelectorAll(".dot-nav .dot");
+		dots.forEach((dot) => dot.classList.remove("active"));
+		const activeDot = Math.floor(this.currentIndex / this.size);
+
+		if (dots[activeDot]) {
+			dots[activeDot].classList.add("active");
+		}
+	}
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	const el = document.querySelector(".slider-container");
+	if (el) {
+		new HDCarousel(el);
+	} else {
+		console.log("Carousel items element not found");
+	}
+});
+
 
