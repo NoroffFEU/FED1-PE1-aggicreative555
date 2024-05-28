@@ -211,6 +211,7 @@
 /* FORM FIELD */
 
 
+
 .contact {
     display: flex;
     flex-direction: column;
@@ -230,11 +231,22 @@
     width: 100%;
 }
 
-.register-form input {
+input {
     max-width: 50rem;
     min-width: 10rem;
     padding: 1rem;
     margin: 0.5rem 0;
+    border: 0.15rem solid var(--clr-black);
+    background-color: var(--clr-white);
+    border-radius: 0.5rem;
+
+    color: var(--clr-grey-8);
+    font-size: var(--body);
+}
+
+textarea {
+    max-width: 50rem;
+    min-width: 10rem;
     border: 0.15rem solid var(--clr-black);
     background-color: var(--clr-white);
     border-radius: 0.5rem;
@@ -259,7 +271,7 @@
     padding: 2rem;
     height: auto;
     width: auto;
-    
+
     border-radius: 0.5rem;
 
 }
