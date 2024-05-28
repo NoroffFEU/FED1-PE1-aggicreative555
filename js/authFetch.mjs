@@ -3,7 +3,7 @@ import { load, save } from "../js/storage.mjs";
 const API_KEY_URL = 'https://v2.api.noroff.dev/auth/create-api-key';
 
 export async function obtainApiKey() {
-    const accessToken = localStorage.getItem('accessToken');
+    const accessToken = localStorage.getItem("accessToken");
 
     if (!accessToken) {
         throw new Error('Access token not found. Please log in first.');
@@ -40,9 +40,11 @@ export async function obtainApiKey() {
 
 obtainApiKey();
 
-export function headers() {
+export async function headers() {
     const accessToken = load("accessToken");
-    const apiKey = obtainApiKey();
+    const apiKey = await obtainApiKey(); 
+    console.log('Access Token:', accessToken); 
+    console.log('API Key:', apiKey); 
 
     return {
         "Content-Type": "application/json",
