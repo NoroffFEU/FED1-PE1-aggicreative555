@@ -1,7 +1,7 @@
 
-import { save } from "../js/storage.mjs";
+import { save, load } from "../js/storage.mjs";
 import { updatePost } from "../js/posts/update.mjs";
-import { createPost } from "../js/posts/create.mjs";
+import { createPostifLogged } from "../js/posts/create.mjs";
 import { obtainApiKey } from "../js/authFetch.mjs";
 
 
@@ -29,8 +29,13 @@ export async function loginUser(url, userData) {
 
         if (response.status === 200) {
             const { accessToken, ...userDetails } = json.data;
+
+            const { name } = userDetails;
+
+            const profile = { ...userDetails, name };
+
             localStorage.setItem("accessToken", accessToken);
-            save("profile", userDetails);
+            save("profile", { ...userDetails, name });
 
 
             alert("Login successful!");
@@ -75,26 +80,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     handleLogin();
 });
 
-// const postsUrl = `${API_BASE_URL}/auth/login`;
+createPostifLogged();
 
-// getWithToken(postsUrl);
-
-// async function initiate() {
-//     try {
-//         const userData = {
-//             email: 'aggi1@stud.noroff.no',
-//             password: 'aggi1111'
-//         };
-        
-//         await loginUser(userData);
-        
-//         await obtainApiKey();
-//     } catch (error) {
-//         console.error('Error during initiation:', error);
-//     }
-// }
-
-// initiate();
 
 // updatePost ({
 //     id: "example-id UPDATE",
@@ -109,7 +96,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 //     body: "Example"
 // })
 
-createPost()
+// createPost()
 // updatePost()
 // removePost()
 // getPost()
