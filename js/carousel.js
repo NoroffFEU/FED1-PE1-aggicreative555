@@ -1,40 +1,3 @@
-console.log('hi');
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     fetchPosts();
-
-//     function fetchPosts() {
-//         const apiUrl = 'https://v2.api.noroff.dev/blog/posts';
-//         fetch(apiUrl)
-//             .then(response => response.json())
-//             .then(data => {
-//                 populateCarousel(data.data);
-//             })
-//             .catch(error => console.error('Error fetching posts:', error));
-//     }
-
-//     function populateCarousel(posts) {
-//         const carouselContainer = document.getElementById('carousel_items');
-//         const postTemplate = carouselContainer.querySelector('.hdcarousel_item');
-
-//         carouselContainer.innerHTML = ''; 
-
-//         posts.forEach(post => {
-//             const postElement = postTemplate.cloneNode(true);
-//             postElement.querySelector('.img').src = post.media.url;
-//             postElement.querySelector('.img').alt = post.media.alt || 'Post image';
-//             postElement.querySelector('.postTitle').textContent = post.title;
-//             postElement.querySelector('.updateDate').textContent = new Date(post.updated).toLocaleDateString();
-//             postElement.querySelector('.avatarImg').src = post.author.avatar.url;
-//             postElement.querySelector('.avatarImg').alt = post.author.avatar.alt || 'Author avatar';
-//             postElement.querySelector('.authorName').textContent = post.author.name;
-            
-//             carouselContainer.appendChild(postElement);
-//         });
-
-//         new HDCarousel(carouselContainer); 
-//     }
-// });
 
 class HDCarousel {
     constructor(el) {
@@ -126,4 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+const hamburger = document.querySelectorAll("#menu-icon");
+const navMenu = document.querySelectorAll("#nav-menu");
+
+hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+})
 
