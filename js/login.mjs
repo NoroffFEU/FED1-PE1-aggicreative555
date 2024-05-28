@@ -1,7 +1,8 @@
-import { load } from "../js/storage.mjs";
-import * as storage from "../js/storage.mjs";
-import { updatePost } from "../js/posts/create.mjs";
 
+import { save } from "../js/storage.mjs";
+import { updatePost } from "../js/posts/update.mjs";
+import { createPost } from "../js/posts/create.mjs";
+import { obtainApiKey } from "../js/authFetch.mjs";
 
 
 // access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWdnaV8xMjMiLCJlbWFpbCI6ImFnZ2kuMTIzQHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzE0Mzk0NTU3fQ.R4Bz9PZ4lbIdxO6n7bDEyCwvStDeq42yzdeJY1rYCS8
@@ -21,16 +22,20 @@ export async function loginUser(url, userData) {
         const response = await fetch(url, postData);
         const json = await response.json();
 
-        console.log(response);
-        console.log(json);
+        // console.log('Response status:', response.status);
 
-        if (json.response.status) {
-            const { accessToken, ...userDetails } = await response.json()
-            localStorage.setItem('accessToken', accessToken)
-            save("profile", userDetails)
+        // console.log(response);
+        // console.log(json);
+
+        if (response.status === 200) {
+            const { accessToken, ...userDetails } = json.data;
+            localStorage.setItem("accessToken", accessToken);
+            save("profile", userDetails);
+
 
             alert("Login successful!");
-            window.location.href = '../post/edit.html';
+            // window.location.href = "../post/edit.html";
+
         } else {
             alert("Login failed. User doesn't exist");
         }
@@ -40,33 +45,15 @@ export async function loginUser(url, userData) {
     }
 }
 
-// async function getWithToken(url) {
-//     try {
-//         const token = localStorage.getItem('accessToken');
-//         console.log(token);
-//         const fetchOptions = {
-//             method: 'GET',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Authorization': `Bearer ${token}`, 
-//             },
-//         }
-
-//         const response = await fetch(url, fetchOptions);
-//         const json = await response.json();
-//         console.log(response);
-//         console.log(json);
-
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-
-
 export function handleLogin() {
     
     const loginEmail = document.getElementById('loginEmail').value;
     const loginPassword = document.getElementById('loginPassword').value;
+
+    
+    console.log('User input email:', loginEmail);
+    console.log('User input password:', loginPassword);
+
 
     
     const userLogin = {
@@ -92,8 +79,38 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 
 // getWithToken(postsUrl);
 
-updatePost ({
-    id: "example-id",
-    title: "Example",
-    body: "Example"
-})
+// async function initiate() {
+//     try {
+//         const userData = {
+//             email: 'aggi1@stud.noroff.no',
+//             password: 'aggi1111'
+//         };
+        
+//         await loginUser(userData);
+        
+//         await obtainApiKey();
+//     } catch (error) {
+//         console.error('Error during initiation:', error);
+//     }
+// }
+
+// initiate();
+
+// updatePost ({
+//     id: "example-id UPDATE",
+//     title: "Example UPDATE",
+//     body: "Example UPDATE"
+// })
+
+// createPost ({
+//     id: "example-id",
+//     name: "example-name",
+//     title: "Example",
+//     body: "Example"
+// })
+
+createPost()
+// updatePost()
+// removePost()
+// getPost()
+// getPosts()
