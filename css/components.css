@@ -103,8 +103,11 @@
 #arrow-right {
     position: absolute;
     cursor: pointer;
+    background-color: var(--clr-white);
+    border-radius: 50%;
+    z-index: 10;
     top: 50%;
-    left: 96%;
+    right: 2%;
 
 }
 
@@ -112,7 +115,10 @@
     position: absolute;
     cursor: pointer;
     top: 50%;
-    left: -1%;
+    background-color: var(--clr-white);
+    border-radius: 50%;
+    z-index: 10;
+    left: 2%;
     transform: rotate(180deg);
 }
 
