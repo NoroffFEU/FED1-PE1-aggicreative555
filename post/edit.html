@@ -10,10 +10,11 @@
     <script type="module" src="/js/posts/populateSingle.mjs" defer></script>
     <script type="module" src="../js/posts/create.mjs"></script>
     <script type="module" src="../js/posts/createPost.mjs"></script>
-    <script src="../js/carousel.js" defer></script>
+    <script type="module" src="/js/posts/populateSingle.mjs" defer></script>
+    <script type="module" src="/js/posts/update.mjs"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
     <!-- CSS -->
 
     <!-- FONT -->
@@ -56,34 +57,56 @@
         </div>
     </header>
     <main>
-        <section class="createPost">
-            <h1 class="title">Create Post</h1>
-            <div class="form-container">
-                <form class="register-form" id="createPostForm">
-                    <div class="form-item">
-                        <label for="postTitle" class="body bold">Title</label>
-                        <input type="text" id="postTitle" name="postTitle" class="name" title="Enter title for post"
-                            placeholder="Create title" required />
-                    </div>
-                    <div class="form-item">
-                        <label for="postBody" class="body bold">Description</label>
-                        <input type="text" id="postBody" name="postBody" class="name" placeholder="Write a description"
-                            title="Description of post" />
-                    </div>
-                    <div class="form-item">
-                        <label for="postImageUrl" class="body bold">Image link (optional)</label>
-                        <input type="text" id="postImageUrl" name="postImageUrl" class="name" placeholder="img.com/link"
-                            title="place a link" minlength="8" />
-                    </div>
-                    <div class="form-item">
-                        <label for="postImageAlt" class="body bold">Image description (optional)</label>
-                        <input type="text" id="postImageAlt" name="postImageAlt" class="name"
-                            placeholder="Describe picture" title="Write a description for an image" minlength="8" />
-                    </div>
-                    <div class="flex-S"><button type="submit" class="flex-2 btn-primary ">CreatePost</button></div>
-                </form>
-
+        <section>
+            <div class="post-wrapper-carousel">
+                <h1 class="title">Create Post</h1>
+                <div class="form-container">
+                    <form class="register-form" id="createPostForm">
+                        <div class="form-item">
+                            <label for="postTitle" class="body bold">Title</label>
+                            <input type="text" id="postTitle" name="postTitle" class="name" title="Enter title for post"
+                                placeholder="Create title" required />
+                        </div>
+                        <div class="form-item">
+                            <label for="postBody" class="body bold">Description</label>
+                            <input type="text" id="postBody" name="postBody" class="name" placeholder="Write a description"
+                                title="Description of post" />
+                        </div>
+                        <div class="form-item">
+                            <label for="postImageUrl" class="body bold">Image link (optional)</label>
+                            <input type="text" id="postImageUrl" name="postImageUrl" class="name" placeholder="img.com/link"
+                                title="place a link" minlength="8" />
+                        </div>
+                        <div class="form-item">
+                            <label for="postImageAlt" class="body bold">Image description (optional)</label>
+                            <input type="text" id="postImageAlt" name="postImageAlt" class="name"
+                                placeholder="Describe picture" title="Write a description for an image" minlength="8" />
+                        </div>
+                        <div class="flex-S"><button type="submit" class="flex-2 btn-primary ">CreatePost</button></div>
+                    </form>
+                </div>
             </div>
+        </section>
+        <section class="post-wrapper-carousel">
+            <div class="post-container">
+                <div class="image-container">
+                    <img src="" alt="" class="postImg">
+                </div>
+                <section class="authorInfo">
+                    <div class="img-circle">
+                        <img src="" alt="" class="authorAvatar">
+                    </div>
+                    <h2 class="authorName"></h2>
+                </section>
+                <div class="post-right">
+                    <section class="post-description">
+                        <h2 class="postTitle heading-1"></h2>
+                        <article class="postBody"></article>
+                        <span class="postDate"></span>
+                    </section>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="bg-black">
