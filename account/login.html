@@ -6,12 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome back to HotView Labs! </title>
     <meta name="description" content="Log into your account and get inspired!" />
-    <link rel="stylesheet" type="text/css" href="/css/index.css" />
-    <script type="module" src="../js/login.mjs" defer></script>
-    <script type="module" src="/js/header.mjs" defer></script>
-    <script src="../js/carousel.js" defer></script>
+    <script type="module" src="/src/js/views/login.js" defer></script>
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/src/css/index.css">
     <!-- CSS -->
 
     <!-- FONT -->
@@ -30,51 +27,69 @@
     <header>
         <div class="nav-wrapper">
             <div class="nav-left">
-                <a href="../post/index.html" class="logo"><img src="../assets/logo/hotviewlabs-logo.svg" alt="HotView Labs logo"></a>
+                <a href="../post/index.html" class="logo"><img src="../assets/logo/hotviewlabs-logo.svg" alt="Vinterest logo"></a>
                 <input type="checkbox" class="checkbox" id="nav-toggle" aria-label="Open or close menu toggle">
             </div>
             <label for="nav-toggle" id="nav-toggle" class="nav-toggle" aria-controls="primary-navigation">
                 <span class="material-symbols-outlined size-0" id="menu-icon">menu</span>
                 <span class="material-symbols-outlined size-40" id="close-icon">close</span>
             </label>    
-            <nav class="nav-center">
-                <ul role="list" class="nav-list" id="primary-navigation">
-                    <li><a class="body bold" id="activeLink" href="../../FED1-PE1-aggicreative555/post/index.html" style="--i:1;">Home</a></li>
-                    <li><a href="#" class="body bold" style="--i:2;">Explore</a></li>
-                    <li><a href="#" class="body bold" style="--i:3;">Search</a></li>
-                </ul>
-            </nav>
             <nav class="nav-right">
                 <ul role="list" class="nav-list" id="primary-navigation">
-                    <li><a href="#" class="body bold" style="--i:2;">Login</a></li>
-                    <li><a href="#" class="body bold" style="--i:3;">Register</a></li>
+                    <li><a class="body bold" id="activeLink" href="./index.html" style="--i:1;">Home</a></li>
+                    <li><a href="/post/index.html" class="body bold" style="--i:2;">Explore</a></li>
+                    <li><a href="/login.html" class="body bold" style="--i:2;">Login</a></li>
+                    <li><a href="/register.html" class="body bold" style="--i:3;">Register</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <main>
-        <section>
-            <div class="form-container">
-                <h1 class="heading-2"><span class="bold">Welcome</span> to HotView Labs!</h1>
-                <form class="register-form" id="loginForm">
+        <section class="form-container">
+            <div id="userSuccess" class="" role="alert" aria-live="polite"></div>
+            <form name="login" id="loginForm" aria-describedby="userSuccess" class="form">
+                <fieldset class="fieldset">
                     <div class="form-item">
-                        <label for="loginEmail" class="body bold">Email</label>
-                        <input type="text" id="loginEmail" name="loginEmail" class="email" placeholder="name@email.com"
-                            title="Enter a valid email address" pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
-                            autocomplete="email" required />
+                        <label for="email" class="label-base">Email</label>
+                        <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        class="input-base"
+                        placeholder="yourname@stud.noroff.no"
+                        required
+                        pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+                        title="Must be a noroff.no or stud.noroff.no email address"
+                        aria-required="true"
+                        aria-label="Email address"
+                        inputmode="email"
+                        autocomplete="email"
+                        />
+                        <p class="error-message" aria-live="polite"></p>
                     </div>
                     <div class="form-item">
-                        <label for="loginPassword" class="body bold">Password</label>
-                        <input type="text" id="loginPassword" name="loginPassword" class="password"
-                            placeholder="********" title="Create a password" required />
+                        <label for="password" class="label-base">Password</label>
+                        <input
+                        class="input-base"
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder="Enter your password"
+                        required
+                        minlength="8"
+                        maxlength="30"
+                        title="Password must be at least 8 characters"
+                        aria-required="true"
+                        aria-label="Password"
+                        inputmode="text"
+                        autocomplete="current-password"/>
+                        <p class="error-message" aria-live="polite"></p>
                     </div>
-                    <div class="flex-S"><button type="submit" class="flex-2 btn-primary ">Login</button></div>
-                </form>
-                <div class="flex-S centered">
-                    <h3 class="heading-3">Not on HotView Labs yet?</h3>
-                    <a class="flex-2 btn-secondary" href="../account/register.html">Register</a>
+                </fieldset>
+                <div class="flex-S">
+                    <button type="submit" class="flex-2 btn-primary ">Login</button>
                 </div>
-
+            </form>
         </section>
     </main>
     <footer class="bg-black">
