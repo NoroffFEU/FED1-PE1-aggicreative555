@@ -36,7 +36,7 @@ export function userNav() {
   loginLink.setAttribute("aria-label", "Login");
   loginLink.href = "/qccount/login.html";
   loginLink.classList.add(
-    "navlink",
+    "nav-link",
   );
   loginLink.textContent = "Login";
 
@@ -44,7 +44,7 @@ export function userNav() {
   registerLink.setAttribute("aria-label", "register");
   registerLink.href = "/account/register.html";
   registerLink.classList.add(
-    "navlink",
+    "nav-link",
   );
   registerLink.textContent = "Register";
 

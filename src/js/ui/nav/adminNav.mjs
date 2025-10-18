@@ -35,9 +35,9 @@ export function adminNav() {
   createLink.setAttribute("aria-label", "Create a Post");
   createLink.href = "/post/create.html";
   createLink.classList.add(
-    "navlink",
+    "nav-link",
   );
-  createLink.textContent = "create";
+  createLink.textContent = "Create";
 
   const userIconContainer = document.createElement("a");
   userIconContainer.href = "/profile/index.html";
