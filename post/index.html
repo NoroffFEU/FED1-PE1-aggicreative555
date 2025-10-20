@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to the HotView Labs home page!</title>
     <meta name="description" content="Discover blog posts, ideas and inspiration!"/>
-    <script src="../js/carousel.js" defer></script>
-    <script src="../js/grid.js" defer></script>
+    <script type="module" src="/src/js/views/posts.js" defer></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="/src/css/index.css">
     <!-- CSS -->
 
     <!-- FONT -->
@@ -329,104 +328,13 @@
             </div>
         </section>
         <section>
-            <div class="post-grid-wrapper">
-                <div class="post-container">
-                    <div class="slider-container">
-                        <div class="post-container S">
-                            <div class="image-container">
-                            </div>
-                            <div class="post-bot">
-                                <div class="post-left">
-                                    <div class="icons-inline">
-                                        <span class="material-symbols-outlined">
-                                            favorite
-                                        </span>
-                                        <span class="material-symbols-outlined">
-                                            chat_bubble
-                                        </span>
-                                        <span class="material-symbols-outlined">
-                                            share
-                                        </span>
-                                    </div>
-                                    <div class="post-content">
-                                        <h3 class="heading-1">Post Title</h3>
-                                        <p class="caption">Date</p>
-                                    </div>
-                                </div>
-                                <div class="post-right">
-                                    <div class="img-circle">
-                                    </div>
-                                    <div>
-                                        <p class="body bold">Author</p>
-                                    </div>
-                                </div>
-                            </div>
-                    
-                        </div>
-                        <div class="post-container S">
-                            <div class="image-container">
-                            </div>
-                            <div class="post-bot">
-                                <div class="post-left">
-                                    <div class="icons-inline">
-                                        <span class="material-symbols-outlined">
-                                            favorite
-                                        </span>
-                                        <span class="material-symbols-outlined">
-                                            chat_bubble
-                                        </span>
-                                        <span class="material-symbols-outlined">
-                                            share
-                                        </span>
-                                    </div>
-                                    <div class="post-content">
-                                        <h3 class="heading-1">Post Title</h3>
-                                        <p class="caption">Date</p>
-                                    </div>
-                                </div>
-                                <div class="post-right">
-                                    <div class="img-circle">
-                                    </div>
-                                    <div>
-                                        <p class="body bold">Author</p>
-                                    </div>
-                                </div>
-                            </div>
-                    
-                        </div>
-                        <div class="post-container S">
-                            <div class="image-container">
-                            </div>
-                            <div class="post-bot">
-                                <div class="post-left">
-                                    <div class="icons-inline">
-                                        <span class="material-symbols-outlined">
-                                            favorite
-                                        </span>
-                                        <span class="material-symbols-outlined">
-                                            chat_bubble
-                                        </span>
-                                        <span class="material-symbols-outlined">
-                                            share
-                                        </span>
-                                    </div>
-                                    <div class="post-content">
-                                        <h3 class="heading-1">Post Title</h3>
-                                        <p class="caption">Date</p>
-                                    </div>
-                                </div>
-                                <div class="post-right">
-                                    <div class="img-circle">
-                                    </div>
-                                    <div>
-                                        <p class="body bold">Author</p>
-                                    </div>
-                                </div>
-                            </div>
-                    
-                        </div>
-                    </div>
-                </div>
+            <div id="userSuccess" class="invisible"></div>
+            <div id="postsContainer">
+            </div>
+             <div id="pagination" class="flex gap-2 flex-col items-center justify-center mt-6 mb-10">
+                <button id="prevPage" class="">Prev</button>
+                <div id="pageNumbers" class=""></div>
+                <button id="nextPage" class="">Next</button>
             </div>
         </section>
     </main>
