@@ -1,0 +1,16 @@
+.btn-XS {
+    cursor: pointer;
+    box-sizing: border-box;
+    display: flex;
+    padding: .5rem 0rem;
+    margin: 2rem 1rem;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    background-color: transparent;
+
+    font-family: var(--ff-primary);
+    font-size: var(--fs-caption);
+
+    transition: 0.2s ease-in-out;
+}
