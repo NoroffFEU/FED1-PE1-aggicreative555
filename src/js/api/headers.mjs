@@ -22,8 +22,13 @@ export function headers({ authRequired = false, apiKeyRequired = false } = {}) {
 
   // Only append Auth token if required
   if (authRequired) {
-    const accessToken = localStorage.getItem("accessToken");
+    let accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
+      try {
+        accessToken = JSON.parse(accessToken); 
+      } catch {
+        accessToken = accessToken.replace(/^"|"$/g, ""); 
+      }
       headers.append("Authorization", `Bearer ${accessToken}`);
     } else {
       throw new Error("Authorization token is missing.");
