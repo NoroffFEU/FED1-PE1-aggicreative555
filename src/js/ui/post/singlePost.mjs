@@ -1,9 +1,14 @@
+import { formatDate } from "../../utilities/formatDate.mjs";
+
 export function singlePost(post) {
-    const mainContainer = document.createElement("div");
+    const mainContainer = document.createElement("a");
     mainContainer.classList.add(
         "post-container"
     );
     mainContainer.dataset.id = `${post.id}`;
+    mainContainer.href = `/post/?id=${post.id}`;
+    mainContainer.setAttribute("aria-label", `View post titled "${post.title}"`);
+    mainContainer.setAttribute("title", `View post titled "${post.title}"`);
 
     const pictureFrame = document.createElement("div");
     pictureFrame.classList.add(
@@ -11,16 +16,15 @@ export function singlePost(post) {
     );
     const pic = document.createElement("img");
     pic.classList.add("img");
-    const placeholderImage =
-        "https://unsplash.com/photos/grayscale-photo-of-man-and-dog-VvSY-fOx6pw";
-    if (!post.image?.url || post.image.url.includes("example.com")) {
+    const placeholderImage = "https://unsplash.com/photos/grayscale-photo-of-man-and-dog-VvSY-fOx6pw";
+    if (!post.media?.url) {
         pic.src = placeholderImage;
     } else {
-        pic.src = post.image.url;
+        pic.src = post.media.url;
     }
     pic.classList.add("img");
-    pic.alt = `${post.image.alt || "Image related to blog post"}`;
-    pic.setAttribute("aria-label", `${post.image.alt}`);
+    pic.alt = `${post.media.alt || "Image related to blog post"}`;
+    pic.setAttribute("aria-label", `${post.media.alt}`);
     const overlay = document.createElement("div");
     overlay.classList.add(
         "post-img-overlay"
@@ -35,20 +39,19 @@ export function singlePost(post) {
 
     const titleContent = document.createElement("div");
     titleContent.classList.add(
-        "title-content"
+        "title-content", "centered",
     );
+
     const author = document.createElement("p");
-    author.classList.add("caption");
-    author.textContent = `${post.author}`;
+    author.classList.add("caption", "italic", "right");
+    author.textContent = `Written by: ${post.author.name}`;
 
     const title = document.createElement("p");
-    title.classList.add("heading-3");
+    title.classList.add("heading-2", "all-caps");
     title.textContent = `${post.title}`;
 
     const description = document.createElement("p");
-    description.classList.add(
-        "description"
-    );
+    description.className = "description";
     description.textContent = `${post.body}`;
 
     titleContent.append(title, description);
@@ -58,13 +61,18 @@ export function singlePost(post) {
         "post-tags"
     );
 
+    const created = document.createElement("p");
+    created.classList.add("caption", "centered");
+    created.innerText = formatDate(post.created);
+
+
     const tags = document.createElement("p");
-    tags.className.add("caption")
+    tags.className = "caption";
     tags.innerText = `${post.tags.map(tag => `#${tag}`).join(", ")}`;
-    postTagsContainer.appendChild(tags);
+    postTags.appendChild(author, tags);
 
 
-    mainContent.append(titleContent, postTags);
+    mainContent.append(created,titleContent, postTags);
     mainContainer.append(pictureFrame, mainContent);
 
     return mainContainer;

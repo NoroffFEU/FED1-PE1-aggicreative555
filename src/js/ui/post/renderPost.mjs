@@ -1,3 +1,4 @@
+import { postIdTemplate } from "./postId.mjs";
 import { singlePost } from "./singlePost.mjs";
 
 export function renderMultiplePosts(posts) {
@@ -13,14 +14,7 @@ export function renderMultiplePosts(posts) {
   );
 
   posts.forEach((post) => {
-    if (!post.image || !post.image.url) {
-      post.image = {
-        url: "/",
-        alt: "Placeholder image",
-      };
-    } else {
-      console.error("No post image found")
-    }
+    console.log(post);
     const postElement = singlePost(post);
     container.appendChild(postElement);
   });
