@@ -7,14 +7,10 @@
     <title>See your posts, edit and save.</title>
     <meta name="description"
         content="Here, you can view your posts, edit their title and content, and save them for others to see!" />
-    <script type="module" src="/js/posts/populateSingle.mjs" defer></script>
-    <script type="module" src="../js/posts/create.mjs" defer></script>
-    <script type="module" src="../js/posts/createPost.mjs" defer></script>
-    <script type="module" src="/js/posts/populateSingle.mjs" defer></script>
-    <script type="module" src="/js/posts/update.mjs" defer></script>
+    <script type="module" src="/src/js/views/edit.js" defer></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="/src/css/index.css">
     <!-- CSS -->
 
     <!-- FONT -->
@@ -24,8 +20,7 @@
     <!-- FONT -->
 
     <!-- ICONS -->
-    <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!-- ICONS -->
 
 </head>
@@ -34,28 +29,9 @@
     <header id="header">
     </header>
     <main>
-        <section>
-        </section>
-        <section class="post-wrapper-carousel">
-            <div class="post-container">
-                <div class="image-container">
-                    <img src="" alt="" class="postImg">
-                </div>
-                <section class="authorInfo">
-                    <div class="img-circle">
-                        <img src="" alt="" class="authorAvatar">
-                    </div>
-                    <h2 class="authorName"></h2>
-                </section>
-                <div class="post-right">
-                    <section class="post-description">
-                        <h2 class="postTitle heading-1"></h2>
-                        <article class="postBody"></article>
-                        <span class="postDate"></span>
-                    </section>
-                </div>
-            </div>
-        </section>
+        <div id="userSuccess" class="invisible" aria-live="polite"></div>
+        <div id="formContainer" class="flex-S-col centered">
+        </div>
     </main>
     <footer id="footer">
     </footer>

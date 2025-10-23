@@ -30,22 +30,33 @@ import { headers } from "../headers.mjs";
  */
 
 export async function updatePost(id, body) {
-	const user = load("user");
+	if (!id) {
+		throw new Error("No id found")
+	}
+	const rawUser = load("user");
+	const user = typeof rawUser === "string" ? JSON.parse(rawUser) : rawUser;
 	const username = user?.name;
 	const url = new URL(`${API_POSTS}/${username}/${id}`);
-	const response = await fetch(url, {
-		method: "PUT",
-		headers: headers({ authRequired: true }),
-		body: JSON.stringify(body),
-	});
 
-	const post = await response.json();
-	console.log('postdata:', post);
+	try {
+		const response = await fetch(url, {
+			method: "PUT",
+			headers: headers({ authRequired: true }),
+			body: JSON.stringify(body),
+		});
 
-	if (!response.ok) {
-		console.error(`Failed to update post:${post?.message}`);
-		throw new Error(post?.message || "API request failed");
+		const post = await response.json();
+		console.log('postdata:', post);
+
+		if (!response.ok) {
+			console.error(`Failed to update post:${post?.message}`);
+			throw new Error(post?.message || "API request failed");
+		}
+
+		return post;
+
+	} catch (error) {
+		console.error("Error in updatePost:", error);
+		throw error;
 	}
-
-	return post;
 	}

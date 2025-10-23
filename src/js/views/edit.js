@@ -3,13 +3,14 @@
  * @function initializeUpdate
 */
 
+import { readPost } from "../api/posts/read.mjs";
 import { postFormTemplate } from "../ui/forms/postFormTemplate.mjs";
 import { validateField } from "../ui/global/validateField.mjs";
 import { isValidDescription, isValidImageAlt, isValidTitle, isValidUrl } from "../ui/global/validators.mjs";
 import { navToggler } from "../ui/nav/navToggler.mjs";
 import { onEditPost } from "../ui/post/edit.mjs";
 
-function initializeEdit() {
+async function initializeEdit() {
     const token = localStorage.getItem("accessToken");
 
     if (!token) {
@@ -28,10 +29,29 @@ function initializeEdit() {
         console.error("No #footer or #header element located in the DOM");
     }
 
-    const createForm = postFormTemplate({ isEdit: true, postData });
-    document.querySelector("#formContainer").appendChild(createForm);
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get("id");
+    if (!postId) {
+        console.error("No post id found in url");
+    }
 
-    createForm.addEventListener("submit", onEditPost );
+    let postData; 
+    try {
+        postData = await readPost(postId);
+        console.log("post for editing", postData)
+    } catch (error) {
+        console.error("Failed to load post:", error);
+        const container = document.querySelector("#formContainer");
+        container.textContent = "Failed to load post for editing. Please try again later."
+        container.classList.add = ("flex-S-row", "heading-3");
+    }
+
+    const editForm = postFormTemplate({ isEdit: true, postData });
+    const container = document.querySelector("#formContainer");
+    container.innerHTML = "";
+    container.appendChild(editForm);
+
+    editForm.addEventListener("submit", onEditPost );
 
     const titleInput = document.getElementById("title");
     const descriptionInput = document.getElementById("body");

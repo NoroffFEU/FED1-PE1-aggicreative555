@@ -48,7 +48,7 @@ export async function loadPosts() {
         save("cachedPosts", JSON.stringify(posts));
     } else if (postId) {
         const pagination = document.getElementById("pagination");
-        pagination.classList.add("invisible");
+        pagination.style.visibility = "hidden";
         const post = await readPost(postId);
         container.innerHTML = "";
         container.appendChild(postIdTemplate(post));

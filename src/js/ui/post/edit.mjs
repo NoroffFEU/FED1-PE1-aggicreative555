@@ -16,6 +16,12 @@ export async function onEditPost(event) {
     const formData = new FormData(form);
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
+
+    if (!id) {
+        console.error("Missing post id in URL");
+        return;
+    }
+
     const messageContainer = document.getElementById("userSuccess");
 
 
@@ -24,8 +30,8 @@ export async function onEditPost(event) {
         tags: formData.get("tags")?.split(",").map(tag => tag.trim()).filter(Boolean),
         body: formData.get("body") || "",
         media: {
-        url: formData.get("media.url"),
-        alt: formData.get("media.alt"),
+        url: formData.get("media.url") || "",
+        alt: formData.get("media.alt") || "",
         },
     };
 
@@ -46,8 +52,8 @@ export async function onEditPost(event) {
     } catch (error) {
         console.error("Error creating post:", error);
         messageContainer.classList.remove("invisible");
-        // messageContainer.innerHTML =
-        //   "Failed to create post, check your fields and try again";
+        messageContainer.innerHTML =
+          "Failed to create post, check your fields and try again";
         // setTimeout(() => {
         //   window.location.reload();
         // }, 1500);
