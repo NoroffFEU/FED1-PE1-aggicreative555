@@ -8,12 +8,10 @@
  */
 export function shareButton() {
   const shareButton = document.createElement("button");
-  shareButton.classList.add(
-    "btn-XS"
-  );
+  shareButton.className = "btn-XS";
   const shareIcon = document.createElement("i");
   shareIcon.classList.add("material-symbols-sharp",);
-  shareButton.textContent = "share"
+  shareIcon.textContent = "share"
   shareButton.title = "Share post";
   shareButton.ariaLabel = "Share post";
   shareButton.appendChild(shareIcon);

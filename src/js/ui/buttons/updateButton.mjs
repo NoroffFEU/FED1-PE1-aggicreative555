@@ -11,16 +11,11 @@ export function updateButton(postId) {
     console.warn("Post id is required.");
     return;
   }
-  const updateButton = document.createElement("button");
-  updateButton.classList.add(
-    "btn-primary"
-  );
-  updateButton.textContent = "Edit Post";
+    const link = document.createElement("a");
+    link.classList.add("btn-primary");
+    link.href = `/post/edit.html?id=${encodeURIComponent(postId)}`;
+    link.textContent = "Edit Post";
+    link.setAttribute("aria-label", `Edit post ${postId}`);
 
-  updateButton.addEventListener("click", (event) => {
-    event.stopPropagation();
-    window.location.href = `/post/edit/?id=${postId}`;
-  });
-
-  return updateButton;
+  return link;
 }
