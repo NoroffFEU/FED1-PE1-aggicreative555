@@ -1,6 +1,8 @@
+import { deleteButton } from "../buttons/deleteButton.mjs";
 
 export function postFormTemplate({ isEdit = false, postData = {} } = {}) {
     const form = document.createElement("form");
+    form.className = "form"
     form.id = isEdit ? "editPost" : "createPost";
     form.setAttribute("aria-labelledby", "formTitle");
 
@@ -10,11 +12,13 @@ export function postFormTemplate({ isEdit = false, postData = {} } = {}) {
     formTitle.textContent = isEdit ? "Edit Post" : "Create Post";
     form.appendChild(formTitle);
 
-    const essentials = document.createElement("fieldset");
-    essentials.className = "fieldset" ;
-    const essentialsLegend = document.createElement("legend");
-    essentialsLegend.textContent = "Post Details";
-    essentials.appendChild(essentialsLegend);
+    if (isEdit) {
+    const deleteBtn = deleteButton();
+    const buttonContainer = document.createElement("div");
+    buttonContainer.className = "flex-S-row";
+    buttonContainer.appendChild(deleteBtn);
+    form.append(buttonContainer);
+    }
 
     const titleLabel = document.createElement("label");
     titleLabel.htmlFor = "title";
@@ -29,7 +33,7 @@ export function postFormTemplate({ isEdit = false, postData = {} } = {}) {
     titleInput.placeholder = "Enter your post title";
     titleInput.maxLength = 100;
     titleInput.value = isEdit ? postData.title || "" : "";
-    essentials.append(titleLabel, titleInput);
+    form.append(titleLabel, titleInput);
 
     
     const bodyLabel = document.createElement("label");
@@ -43,7 +47,7 @@ export function postFormTemplate({ isEdit = false, postData = {} } = {}) {
     bodyTextarea.placeholder = "Write your post content here...";
     bodyTextarea.rows = 6;
     bodyTextarea.value = isEdit ? postData.body || "" : "";
-    essentials.append(bodyLabel, bodyTextarea);
+    form.append(bodyLabel, bodyTextarea);
 
 
     const tagsLabel = document.createElement("label");
@@ -57,7 +61,7 @@ export function postFormTemplate({ isEdit = false, postData = {} } = {}) {
     tagsInput.name = "tags";
     tagsInput.placeholder = "lifestyle, food, hobby";
     tagsInput.value = isEdit && postData.tags ? postData.tags.join(", ") : "";
-    essentials.append(tagsLabel, tagsInput);
+    form.append(tagsLabel, tagsInput);
 
     const mediaUrlLabel = document.createElement("label");
     mediaUrlLabel.htmlFor = "media-url";
@@ -71,7 +75,7 @@ export function postFormTemplate({ isEdit = false, postData = {} } = {}) {
     mediaUrlInput.placeholder = "https://example.com/image.jpg";
     mediaUrlInput.pattern = "^https?:\\/\\/.+$";
     mediaUrlInput.value = isEdit && postData.media ? postData.media.url || "" : "";
-    essentials.append(mediaUrlLabel, mediaUrlInput);
+    form.append(mediaUrlLabel, mediaUrlInput);
 
     const mediaAltLabel = document.createElement("label");
     mediaAltLabel.htmlFor = "media-alt";
@@ -85,9 +89,8 @@ export function postFormTemplate({ isEdit = false, postData = {} } = {}) {
     mediaAltInput.placeholder = "Describe the image for accessibility";
     mediaAltInput.maxLength = 100;
     mediaAltInput.value = isEdit && postData.media ? postData.media.alt || "" : "";
-    essentials.append(mediaAltLabel, mediaAltInput);
+    form.append(mediaAltLabel, mediaAltInput);
 
-    form.appendChild(essentials);
 
     
     const submitBtn = document.createElement("button");
