@@ -32,9 +32,9 @@ export async function onCreatePost(event) {
         messageContainer.classList.remove("invisible");
         messageContainer.innerHTML = "Post created successfully!";
         // Redirect to the single post view with the new post ID
-        //   setTimeout(() => {
-        //     window.location.href = `/post/?id=${newPost.data.id}`;
-        //   }, 2000);
+          setTimeout(() => {
+            window.location.href = `/post/?id=${newPost.data.id}`;
+          }, 2000);
         alert("Success!")
         } else {
         throw new Error("Post creation succeeded but no ID was returned.");
@@ -42,10 +42,10 @@ export async function onCreatePost(event) {
     } catch (error) {
         console.error("Error creating post:", error);
         messageContainer.classList.remove("invisible");
-        // messageContainer.innerHTML =
-        //   "Failed to create post, check your fields and try again";
-        // setTimeout(() => {
-        //   window.location.reload();
-        // }, 1500);
+        messageContainer.innerHTML =
+          "Failed to create post, check your fields and try again";
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
     }
 }
