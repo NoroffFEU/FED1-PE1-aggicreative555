@@ -2,29 +2,30 @@ import { readPosts } from "../../api/posts/read.mjs";
 
 const ANIMTION_DURATION = 460;
 
-function createElement(tag, attributes = {}, children = {}) {
-	const element = document.createElement(tag);
-	for (const [k, v] of Object.entries(attributes || {})) {
-		if (k === "className") element.className = v;
-		else if (k === "text") element.textContent = String(v);
-		else if (k === true) element.setAttribute(k, "");
-		else if (v === false || v == null) continue;
-		else element.setAttribute(k, String(v));
+function createElement(tag, attributes = {}, children = []) {
+  const element = document.createElement(tag);
 
-		const nodes = Array.isArray(children) ? children : [children];
-		for (const child of nodes) {
-			if (child == null) continue;
-			if (typeof child === "string") element.appendChild(document.createTextNode(child));
-		}
-		return element;
-	}
+  for (const [k, v] of Object.entries(attributes)) {
+    if (k === "className") element.className = v;
+    else if (k === "text") element.textContent = v;
+    else if (v === true) element.setAttribute(k, "");
+    else if (v === false || v == null) continue;
+    else element.setAttribute(k, String(v));
+  }
 
+  if (!Array.isArray(children)) children = [children];
+  for (const child of children) {
+    if (typeof child === "string") element.appendChild(document.createTextNode(child));
+    else if (child instanceof Node) element.appendChild(child);
+  }
+
+  return element;
 }
 
 function buildSlide (post, roleClass = "") {
 	const a = createElement("a", {
 		href: `/post/?id=${encodeURIComponent(post.id)}`,
-		className: `caorusel-item ${roleClass}`, 
+		className: `carousel-item ${roleClass}`, 
 		"aria-label": post.title ? `"Open post ${post.title}"` : "Open post",
 	});
 
@@ -79,40 +80,55 @@ export async function initCarousel() {
 	function render() {
 		inner.innerHTML = "";
 		dots.innerHTML = "";
+		
 		const roles = ["left", "center", "right"];
 		visible.forEach((p, i) => {
 			const slide = buildSlide(p, roles[i]);
 			inner.appendChild(slide);
 		});
 
-		visible.forEach((_, i) => {
+		posts.forEach((_, i) => {
 			const dot = createElement("button", {
-				className: "dot" + (i === 1 ? "active" : ""),
+				className: "dot" + (i === currentIndex ? " active" : ""),
 				role: "tab",
-				"aria-selected": i === 1 ? "true" : "false",
-				"aria-current": i === 1 ? "true" : "false",
+				"aria-selected": i === currentIndex ? "true" : "false",
+				"aria-current": i === currentIndex ? "true" : "false",
 			});
 
-			dot.addEventListener("click", () => goToIndex(i));
+			 dot.addEventListener("click", (e) => {
+				e.stopPropagation();
+				currentIndex = i;
+				updateCarousel(); 
+			});
+
 			dots.appendChild(dot);
 		});
 	}
 
-	function startAnimation(direction) {
-		if (isAnimating) return;
-		isAnimating = true;
-		root.classList.add("animating");
+	function updateDots() {
+		const dotButtons = dots.querySelectorAll(".dot");
+		dotButtons.forEach((dot, i) => {
+			dot.classList.toggle("active", i === currentIndex);
+			dot.setAttribute("aria-selected", i === currentIndex ? "true" : "false");
+		})
+	}
 
-		setTimeout(() => {
-			if (direction === "next") visible = visible.slice(1).concat(visible[0]);
-			else visible = [visible[visible.length - 1]].concat(visible.slice(0, visible.length - 1));
-			render();
-			setTimeout(() => {
-				root.classList.remove("animating");
-				isAnimating = false;
-			}, ANIMTION_DURATION);
-			
-		}, 60);
+	let currentIndex = 0;
+
+	function updateCarousel() {
+		const items = inner.querySelectorAll(".carousel-item");
+		items.forEach((item) => {
+			item.classList.remove("left", "center", "right");
+		});
+
+		const leftIndex = (currentIndex - 1 + posts.length) % posts.length;
+		const rightIndex = (currentIndex + 1 ) % posts.length;
+
+		items[leftIndex].classList.add("left");
+		items[currentIndex].classList.add("center");
+		items[rightIndex].classList.add("right");
+
+		updateDots();
 	}
 
 	function goToIndex(targetIndex) {
@@ -129,12 +145,33 @@ export async function initCarousel() {
 		})();
 	}
 
-	prevBtn.addEventListener("click", () => startAnimation("prev"));
-	nextBtn.addEventListener("click", () => startAnimation("next"));
+	prevBtn.addEventListener("click", () => {
+		if (isAnimating) return;
+		isAnimating = true;
+
+		currentIndex = (currentIndex - 1 + posts.length) % posts.length;
+		updateCarousel();
+		setTimeout(() => {
+			isAnimating = false, 
+			ANIMTION_DURATION
+		});
+	});
+
+	nextBtn.addEventListener("click", () => {
+		if (isAnimating) return;
+		isAnimating = true;
+
+		currentIndex = (currentIndex + 1) % posts.length;
+		updateCarousel();
+		setTimeout(() => {
+			isAnimating = false, 
+			ANIMTION_DURATION
+		});
+	});
 
 	root.addEventListener("keydown", (e) => {
 		if (e.key === "ArrowRight") nextBtn.click();
-		if (e.key === "ArrowLedt") prevBtn.click();
+		if (e.key === "ArrowLeft") prevBtn.click();
 	})
 
 	render();
