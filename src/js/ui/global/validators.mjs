@@ -1,3 +1,5 @@
+// LOGIN / REGISTER 
+
 //Username: Letters, numbers, spaces, dashes allowed
 export function isValidUserName(val) {
   return /^[a-zA-Z0-9_]{1,30}$/.test(val.trim());
@@ -20,7 +22,24 @@ export function isValidConfirmPassword(confirmInput, originalInput) {
   };
 }
 
+// CREATE / EDIT POST
+
 //Name: Letters and a space allowed
-export function isValidName(val) {
-  return /^[A-Za-z ]{2,30}$/.test(val.trim());
+export function isValidTitle(val) {
+  return /^[A-Za-z ]{2,100}$/.test(val.trim());
+}
+
+//Description: Min 10 chars
+export function isValidDescription(val) {
+  return typeof val === "string" && val.trim().length >= 10;
+}
+
+//Image URL: Must start with http/https and be an image
+export function isValidUrl(val) {
+  return /^https:\/\/[^\s]+$/.test(val.trim());
+}
+
+//Alt text: Optional
+export function isValidImageAlt(val) {
+  return val === "" || val.trim().length > 2;
 }
