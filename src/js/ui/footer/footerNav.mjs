@@ -2,7 +2,6 @@ import { load } from "../../utilities/storage.mjs";
 
 export function footerNav() {
   const isLoggedIn = load("accessToken");
-  console.log(isLoggedIn)
 
   const footerContainer = document.createElement("div");
   footerContainer.classList.add(
