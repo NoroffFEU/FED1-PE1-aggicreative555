@@ -132,6 +132,14 @@
     margin-block: 4rem;
 }
 
+.footer-container {
+    display: flex;
+    flex-direction: column ;
+    gap: 1rem;
+    align-items: center;
+    margin-block: 1rem;
+}
+
 
 
 #menu-btn {
@@ -139,7 +147,7 @@
     font-size: 3rem;
     display: none;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
 }
 
 #activeLink {
@@ -149,4 +157,14 @@
 
 #close-icon {
     display:none;
+}
+
+@media (max-width:68em) {
+  .desktop-wrapper {
+    display: none;
+  }
+  #menu-btn {
+    display: block;
+    z-index: 50;
+  }
 }
