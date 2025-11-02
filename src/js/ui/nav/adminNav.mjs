@@ -24,7 +24,7 @@ export function adminNav() {
 
   const exploreLink = document.createElement("a");
   exploreLink.setAttribute("aria-label", "View blog posts made by our community!");
-  exploreLink.href = "/posts/index.html";
+  exploreLink.href = "/post/index.html";
   exploreLink.classList.add(
     "nav-link",
   );

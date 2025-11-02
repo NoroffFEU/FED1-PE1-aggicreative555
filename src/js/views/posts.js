@@ -41,6 +41,11 @@ export async function loadPosts() {
 
   try {
     if (!postId) {
+        const title = document.getElementById("title")
+        const heading = document.createElement("h1");
+        heading.classList.add("display-XL", "centered", "underline");
+        heading.textContent = "All Articles";
+        title.appendChild(heading);
         const posts = await readPosts();
         renderMultiplePosts(posts);
         loadMultiplePosts();

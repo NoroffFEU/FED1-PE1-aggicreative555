@@ -157,7 +157,7 @@
     cursor: pointer;
 }
 
-.footer-container > .nav-link, .caption {
+.footer-container > .nav-link > .caption {
     color: var(--clr-white) !important;
     cursor: pointer;
 }

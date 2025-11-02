@@ -23,7 +23,7 @@ export function userNav() {
 
   const exploreLink = document.createElement("a");
   exploreLink.setAttribute("aria-label", "View blog posts made by our community!");
-  exploreLink.href = "/posts/index.html";
+  exploreLink.href = "/post/index.html";
   exploreLink.classList.add(
     "nav-link",
   );
@@ -31,7 +31,7 @@ export function userNav() {
 
   const loginLink = document.createElement("a");
   loginLink.setAttribute("aria-label", "Login");
-  loginLink.href = "/qccount/login.html";
+  loginLink.href = "/account/login.html";
   loginLink.classList.add(
     "nav-link",
   );

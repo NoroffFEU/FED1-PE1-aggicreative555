@@ -26,6 +26,7 @@
     --fw-medium: 600;
     --fw-bold: 700;
 
+    --fs-title-1: clamp(4rem, 10vw + 1rem, 6.25rem);
     --fs-display-1: clamp(3rem, 10vw + 1rem, 4rem);
     --fs-display-2: clamp(2rem, 5vw + 1rem, 3rem);
     --fs-subtitle: clamp(1.5rem, 5vw + 0.25rem, 2rem);
@@ -109,6 +110,7 @@ h6,
 p {
     overflow-wrap: break-word;
     color: var(--clr-grey-400);
+    cursor: default;
 }
 
 a {
@@ -138,17 +140,27 @@ body {
     margin-inline: var(--spacing-S)
 }
 
+.display-XL {
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-title-1);
+    font-family: var(--ff-primary);
+    text-transform: capitalize;
+}
+
 .display-1 {
     font-weight: var(--fw-regular);
-    font-size: var(--fs-title);
+    font-size: var(--fs-display-1);
     font-family: var(--ff-secondary);
+    text-transform: capitalize;
+    color: var(--clr-accent-red);
 }
 
 .display-2 {
     font-size: var(--fs-display-2);
     font-weight: var(--fw-bold);
     font-family: var(--ff-primary);
-    text-transform: uppercase;
+    text-transform: capitalize;
+    color: var(--clr-accent-red);
 }
 
 .subtitle-1 {
@@ -166,6 +178,11 @@ body {
 .caption { 
     font-size: var(--fs-caption); 
     font-weight: var(--fw-regular);
+    color: var(--clr-grey-200);
+}
+
+.capitalized {
+    text-transform: capitalize;
 }
 
 .caption-italic { 
@@ -183,6 +200,13 @@ p, .body {
     text-transform: uppercase;
 }
 
+.underline-grey {
+    text-decoration: underline;
+    color: var(--clr-grey-200);
+    text-decoration-color: var(--clr-grey-200);
+    text-decoration-thickness: 4px;
+}
+
 .italic {
     font-style: italic;
 }
@@ -197,10 +221,6 @@ p, .body {
 
 .right {
     text-align: right;
-}
-
-.txt-color-grey {
-    color: var(--clr-grey-8);
 }
 
 .bg-black {
@@ -249,7 +269,9 @@ p, .body {
 
 .underline {
     text-decoration: underline;
-    text-underline-offset: .3rem ;
+    text-decoration-color: var(--clr-accent-red);
+    text-underline-offset: 1rem ;
+    text-decoration-thickness: 4px;
 }
 
 .img {

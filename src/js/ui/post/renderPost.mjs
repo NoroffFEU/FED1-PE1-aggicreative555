@@ -1,4 +1,3 @@
-import { postIdTemplate } from "./postId.mjs";
 import { singlePost } from "./singlePost.mjs";
 
 export function renderMultiplePosts(posts) {

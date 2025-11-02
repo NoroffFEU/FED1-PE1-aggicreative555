@@ -42,37 +42,35 @@ export function singlePost(post) {
         "title-content", "centered",
     );
 
+    const date = document.createElement("p");
+    date.classList.add("caption", "italic");
+    date.textContent = formatDate(post.created);
+
+
     const author = document.createElement("p");
-    author.classList.add("caption", "italic", "right");
-    author.textContent = `Written by: ${post.author.name}`;
+    author.classList.add("description", "italic", "underline-grey", "capitalized");
+    author.textContent = `Written By ${post.author.name}`;
 
     const title = document.createElement("p");
-    title.classList.add("subtitle-1", "all-caps");
+    title.classList.add("display-1");
     title.textContent = `${post.title}`;
 
     const description = document.createElement("p");
     description.className = "description";
     description.textContent = `${post.body}`;
 
-    titleContent.append(title, description);
-
     const postTags = document.createElement("div");
     postTags.classList.add(
         "post-tags"
     );
 
-    const created = document.createElement("p");
-    created.classList.add("caption", "centered");
-    created.innerText = formatDate(post.created);
-
-
     const tags = document.createElement("p");
     tags.className = "caption";
     tags.innerText = `${post.tags.map(tag => `#${tag}`).join(", ")}`;
-    postTags.appendChild(author, tags);
+    postTags.appendChild(tags);
 
-
-    mainContent.append(created,titleContent, postTags);
+    titleContent.append(date, title, author, description, postTags);
+    mainContent.append(titleContent);
     mainContainer.append(pictureFrame, mainContent);
 
     return mainContainer;
