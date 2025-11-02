@@ -47,7 +47,7 @@ export function singlePost(post) {
     author.textContent = `Written by: ${post.author.name}`;
 
     const title = document.createElement("p");
-    title.classList.add("heading-2", "all-caps");
+    title.classList.add("subtitle-1", "all-caps");
     title.textContent = `${post.title}`;
 
     const description = document.createElement("p");

@@ -4,33 +4,33 @@
 
     /* Colors */
 
-    --clr-black:#060606;
-    --clr-white:#F2F2F0;
-    --clr-accent-red:#F24444;
+    --clr-black:#0A090A;
+    --clr-white:#FDF3E2;
+    --clr-accent-red:#DC0D07;
     --clr-accent-green:#465952;
 
-    --clr-grey-10: #323232;
-    --clr-grey-8:#7B7B7B;
-    --clr-grey-4:#B5B5B5;
-    --clr-grey-2:#EAEAEA;
+    --clr-grey-400: #171617;
+    --clr-grey-300:#282127;
+    --clr-grey-200:#433C42;
+    --clr-grey-100:#979589;
+    --clr-white-300:#D5C5B5;
+    --clr-white-200:#ECDCBF;
 
 
     /* Fonts */
 
-    --ff-primary:'Inter', sans-serif;
-    --ff-body: var(--ff-primary);
-    --ff-heading: var(--ff-primary);
+    --ff-primary: 'Playfair', serif;
+    --ff-secondary: 'Updock', cursive;
 
     --fw-regular: 400;
     --fw-medium: 600;
     --fw-bold: 700;
 
-    --fs-title: clamp(3rem, 10vw + 1rem, 4rem);
-    --fs-heading-1: clamp(2rem, 5vw + 1rem, 3rem);
-    --fs-heading-2: clamp(1.5rem, 5vw + 0.25rem, 2rem);
-    --fs-heading-3: clamp(1rem, 3vw + 0.25rem, 1.5rem);
-    --fs-body: clamp(1rem, 3vw + 0.1rem, 1.5rem);
-    --fs-caption: clamp(.7rem, 3vw + 0.1rem, 1rem);
+    --fs-display-1: clamp(3rem, 10vw + 1rem, 4rem);
+    --fs-display-2: clamp(2rem, 5vw + 1rem, 3rem);
+    --fs-subtitle: clamp(1.5rem, 5vw + 0.25rem, 2rem);
+    --fs-body: 1rem;
+    --fs-caption: .7rem;
 
     --fs-button: 1.5rem;
 
@@ -108,11 +108,11 @@ h5,
 h6,
 p {
     overflow-wrap: break-word;
-    color: var(--clr-black);
+    color: var(--clr-grey-400);
 }
 
 a {
-    color: var(--clr-black);
+    color: var(--clr-grey-400);
     text-decoration: none;
 }
 
@@ -138,32 +138,40 @@ body {
     margin-inline: var(--spacing-S)
 }
 
-.title {
+.display-1 {
+    font-weight: var(--fw-regular);
     font-size: var(--fs-title);
+    font-family: var(--ff-secondary);
+}
+
+.display-2 {
+    font-size: var(--fs-display-2);
     font-weight: var(--fw-bold);
+    font-family: var(--ff-primary);
     text-transform: uppercase;
 }
 
-.heading-1 {
-    font-size: var(--fs-heading-1);
-    font-weight: var(--fw-medium);
-}
-
-.heading-2 {
+.subtitle-1 {
     font-size: var(--fs-heading-2);
-    font-weight: var(--fw-regular);
+    font-weight: var(--fw-medium);
+    font-style: italic;
     
 }
 
-.heading-3 {
-    font-size: var(--fs-heading-3);
-    font-weight: var(--fw-bold);
+.subtitle-2 {
+    font-size: var(--fs-subtitle);
+    font-weight: var(--fw-medium);
 }
 
 .caption { 
     font-size: var(--fs-caption); 
     font-weight: var(--fw-regular);
-    font-family: var(--ff-body);
+}
+
+.caption-italic { 
+    font-size: var(--fs-caption); 
+    font-style: italic;
+    
 }
 
 p, .body {

@@ -53,7 +53,7 @@ export function postIdTemplate(post) {
         "title-content"
     );
     const title = document.createElement("p");
-    title.className = "heading-1";
+    title.className = "display-1";
     title.textContent = `${post.title}`;
 
     titleContent.append(title);

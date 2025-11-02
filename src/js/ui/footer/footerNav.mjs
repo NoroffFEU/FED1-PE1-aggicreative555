@@ -12,10 +12,10 @@ export function footerNav() {
   logoContainer.href = "/index.html";
   logoContainer.setAttribute("aria-label", "View home page");
   logoContainer.classList.add(
-    "logo",
+    "logo-footer",
   );
   const logoImage = document.createElement("img");
-  logoImage.src = "";
+  logoImage.src = "/assets/logo/vinterest-logo-mono.svg";
   logoImage.alt = "Vinterest logo";
   logoContainer.appendChild(logoImage);
 
@@ -60,7 +60,7 @@ export function footerNav() {
 
   const footer = document.createElement("div");
   footer.classList.add(
-   'footer'
+   'footer-container'
   );
 
   const copyRight = document.createElement("p");

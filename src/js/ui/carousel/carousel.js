@@ -47,10 +47,10 @@ export async function initCarousel() {
 	root.innerHTML = "";
 
 	const prevBtn = createElement("button", { className: "control prev", "aria-label": "Previous slide" }, [
-		createElement("span", { className: "material-symbols-sharp", text: "arrow_back" })
+		createElement("img", { src:"/assets/icons/hand-icon.svg", className: "hand-icon flip-horizontal", })
 	]);
 	const nextBtn = createElement("button", { className: "control next", "aria-label": "Next slide" }, [
-		createElement("span", { className: "material-symbols-sharp", text: "arrow_forward" })
+		createElement("img", { src:"/assets/icons/hand-icon.svg", className: "hand-icon", })
 	]);
 	const inner = createElement("div", { className: "carousel-inner", role: "group", "aria-roledescription": "carousel" });
 	const dots = createElement("div", { className: "dots", role: "tablist", "aria-label": "Select carousel slide" });

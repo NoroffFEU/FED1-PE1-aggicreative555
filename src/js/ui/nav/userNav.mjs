@@ -1,6 +1,3 @@
-import { load } from "../../utilities/storage.mjs";
-
-
 export function userNav() {
   const headerContainer = document.createElement("div");
 
@@ -15,7 +12,7 @@ export function userNav() {
     "logo",
   );
   const logoImage = document.createElement("img");
-  logoImage.src = "";
+  logoImage.src = "assets/logo/vinterst-logotype.svg";
   logoImage.alt = "Vinterest Logo";
   logoContainer.appendChild(logoImage);
 

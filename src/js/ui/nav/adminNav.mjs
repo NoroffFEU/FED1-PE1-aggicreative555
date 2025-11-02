@@ -1,5 +1,3 @@
-import { load } from "../../utilities/storage.mjs";
-
 export function adminNav() {
   const headerContainer = document.createElement("div");
 
@@ -14,8 +12,9 @@ export function adminNav() {
     "logo",
   );
   const logoImage = document.createElement("img");
-  logoImage.src = "";
+  logoImage.src = "/assets/logo/vinterst-logotype.svg";
   logoImage.alt = "Vinterest Logo";
+  logoImage.style.width = "150px";
   logoContainer.appendChild(logoImage);
 
   const pcNav = document.createElement("nav");
@@ -38,23 +37,6 @@ export function adminNav() {
     "nav-link",
   );
   createLink.textContent = "Create";
-
-  const userIconContainer = document.createElement("a");
-  userIconContainer.href = "/profile/index.html";
-  userIconContainer.classList.add(
-    "logo-container",
-  );
-  userIconContainer.title = "Go to my profile";
-  const rawUser = load("user");
-  const user = typeof rawUser === "string" ? JSON.parse(rawUser) : rawUser;
-  const {
-    avatar: { url: avatarUrl = "", alt: avatarAlt = "User avatar" } = {},
-  } = user;
-  const userIconImage = document.createElement("img");
-  userIconImage.src = avatarUrl;
-  userIconImage.alt = avatarAlt || "User avatar";
-  userIconImage.setAttribute("aria-label", "User's avatar");
-  userIconImage.classList.add("logo-img");
 
   const mobileNav = document.createElement("nav");
   mobileNav.classList.add("mobile-nav");
@@ -80,25 +62,6 @@ export function adminNav() {
   });
 
 
-  const mobileUserIconContainer = document.createElement("a");
-  mobileUserIconContainer.href = "/profile/index.html";
-  mobileUserIconContainer.classList.add(
-    "logo-container"
-  );
-  mobileUserIconContainer.title = "Go to my profile";
-  const mobileUserIconImage = document.createElement("img");
-  mobileUserIconImage.src = avatarUrl;
-  mobileUserIconImage.alt = avatarAlt || "User avatar";
-  mobileUserIconImage.setAttribute("aria-label", "User's avatar");
-  mobileUserIconImage.classList.add(
-    "logo-img"
-  );
-  const username = load("userName");
-  const usernameText = document.createElement("p");
-  usernameText.innerHTML = `${username}`;
-
-  mobileUserIconContainer.appendChild(mobileUserIconImage, usernameText);
-
   const mobileExplore = document.createElement("li");
   mobileExplore.classList.add(
   );
@@ -121,11 +84,11 @@ export function adminNav() {
     "mobile-nav-link",
   );
 
-  pcNav.append(exploreLink, createLink, userIconContainer);
-  userIconContainer.appendChild(userIconImage, username);
+  pcNav.append(exploreLink, createLink, );
+
   mobileExplore.appendChild(mobileExploreLink);
   mobileCreate.appendChild(mobileCreateLink);
-  menuBox.append(mobileUserIconContainer, mobileExplore, mobileCreate);
+  menuBox.append(mobileExplore, mobileCreate);
   mobileNav.append(menuButton, menuBox);
   headerContainer.append(logoContainer, pcNav, mobileNav);
 
