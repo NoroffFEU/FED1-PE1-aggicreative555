@@ -92,18 +92,22 @@
     transition: 0.2s ease-in-out;
 }
 
-.btn-XS:hover, 
-.share-button-position:hover {
+.btn-XS:hover {
     outline: 4px solid var(--clr-grey-400);
     letter-spacing: .05em; 
 } 
 
 .share-button-position {
-    background-color: var(--clr-grey-2);
     border-radius: 50%;
     height: 3rem;
     width: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all .2s ease-in-out;
+}
+
+.share-button-position:hover {
+    color: var(--clr-grey-400);
+    transform: translateY(-5%);
 }

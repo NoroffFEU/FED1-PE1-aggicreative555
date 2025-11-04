@@ -1,85 +1,67 @@
-/* FORM FIELD */
-
-.contact {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    text-align: left;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing-S);
-    margin: 3rem 1rem;
-    max-width: 47rem;
-    min-width: 15rem;
-    width: 100%;
-}
-
 .form-item {
     display: flex;
     flex-direction: column;
-}
-
-.fieldset {
-    display: flex;
-    border: 1px black;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing-S);
-    margin: 3rem 1rem;
-    max-width: 47rem;
-    min-width: 15rem;
+    gap: 1rem;
     width: 100%;
 }
 
-input {
-    max-width: 50rem;
-    min-width: 10rem;
-    padding: 1rem;
-    margin: 0.5rem 0;
-    border: 0.15rem solid var(--clr-black);
-    background-color: var(--clr-white);
-    border-radius: 0.5rem;
+.form.user {
+    max-width: 600px;
+    margin-inline: auto;
+    margin-block: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
 
-    color: var(--clr-grey-8);
-    font-size: var(--body);
+.form-container > .display-1 {
+    margin-top: 2rem;
+}
+
+#formTitle {
+    margin-bottom:2rem;
+}
+
+.label-base {
+    font: var(--ff-primary);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+}
+
+.input-base {
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: var(--clr-grey-400);
+    background-color: var(--clr-white);
+    padding: .5rem 1rem;
+}
+
+.input-base.display-1 {
+    padding-right: 1.5rem;
+    text-align: center;
 }
 
 textarea {
-    max-width: 50rem;
-    min-width: 10rem;
-    border: 0.15rem solid var(--clr-black);
-    background-color: var(--clr-white);
-    border-radius: 0.5rem;
-
-    color: var(--clr-grey-8);
-    font-size: var(--body);
+    min-height: 300px;
+    max-height: 800px; 
+    width: 100%;
+    resize: vertical;
 }
 
 .outline-correct {
-    outline: 2px solid darkgreen;
+    outline: 2px solid var(--clr-accent-green);
 }
 
 .outline-error {
-    outline: 2px solid darkred;
+    outline: 2px solid var(--clr-accent-red);
 }
 
-.form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--clr-white);
-    margin: 1rem;
-    padding: 2rem;
-    height: auto;
-    width: auto;
+.form > .postId-container > .content-wrapper {
+    height: fit-content;
+}
 
-    border-radius: 0.5rem;
-
+@media (max-width:68em) {
+    .form.user {
+        margin-inline: 1rem;
+    }
 }

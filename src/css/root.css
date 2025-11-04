@@ -99,6 +99,7 @@ button,
 textarea,
 select {
     font: inherit;
+    cursor: pointer;
 }
 
 h1,
@@ -123,6 +124,8 @@ main {
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    max-width: 1800px;
+    margin: auto;
 }
 
 /* CSS RESET */
@@ -198,13 +201,6 @@ p, .body {
 
 .all-caps {
     text-transform: uppercase;
-}
-
-.underline-grey {
-    text-decoration: underline;
-    color: var(--clr-grey-200);
-    text-decoration-color: var(--clr-grey-200);
-    text-decoration-thickness: 4px;
 }
 
 .italic {
@@ -310,9 +306,18 @@ p, .body {
     color: var(--clr-grey-200);
 }
 
+.border-none {
+    border: 0;
+    background-color: inherit;
+}
+
 .animate-resize {
     transition: all 0.3s ease-in-out;
     will-change: transform, width, height, opacity;
+}
+
+.mx-auto {
+    margin: auto;
 }
 
 /* UTILITY CLASSES */

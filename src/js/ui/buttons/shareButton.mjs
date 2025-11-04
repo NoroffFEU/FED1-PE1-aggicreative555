@@ -8,7 +8,7 @@
  */
 export function shareButton() {
   const shareButton = document.createElement("button");
-  shareButton.className = "btn-XS";
+  shareButton.className = "border-none"
   const shareIcon = document.createElement("i");
   shareIcon.classList.add("material-symbols-sharp",);
   shareIcon.textContent = "share"

@@ -13,7 +13,6 @@ export function renderMultiplePosts(posts) {
   );
 
   posts.forEach((post) => {
-    console.log(post);
     const postElement = singlePost(post);
     container.appendChild(postElement);
   });

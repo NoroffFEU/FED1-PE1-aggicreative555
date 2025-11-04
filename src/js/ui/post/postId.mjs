@@ -46,7 +46,7 @@ export function postIdTemplate(post) {
     const picMini = document.createElement("img");
     picMini.classList.add("img", "pic-mini");
     const placeholderImageMini =
-        "https://unsplash.com/photos/grayscale-photo-of-man-and-dog-VvSY-fOx6pw";
+        "https://cdn.pixabay.com/photo/2020/08/31/16/39/ephemera-5532941_1280.jpg";
         if (!post.media?.url || post.media.url.includes("example.com")) {
             picMini.src = placeholderImageMini;
         } else {
@@ -132,9 +132,7 @@ export function postIdTemplate(post) {
 
     userContentContainer.append(username, userEmail, userBio);
 
-
     userIconNameContainer.append(userContentContainer);
-
 
     const updateContainer = document.createElement("div");
     if (usernameStorage === author ) {

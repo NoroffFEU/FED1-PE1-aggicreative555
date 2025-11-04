@@ -18,7 +18,7 @@ export function singlePost(post) {
     );
     const pic = document.createElement("img");
     pic.classList.add("img");
-    const placeholderImage = "https://unsplash.com/photos/grayscale-photo-of-man-and-dog-VvSY-fOx6pw";
+    const placeholderImage = "https://cdn.pixabay.com/photo/2020/08/31/16/39/ephemera-5532941_1280.jpg";
     if (!post.media?.url) {
         pic.src = placeholderImage;
     } else {
@@ -43,7 +43,7 @@ export function singlePost(post) {
 
     const titleContent = document.createElement("div");
     titleContent.classList.add(
-        "title-content", "centered",
+        "title-", "centered",
     );
 
     const date = document.createElement("p");
@@ -52,15 +52,15 @@ export function singlePost(post) {
 
 
     const author = document.createElement("p");
-    author.classList.add("description", "italic", "underline-grey", "capitalized");
+    author.classList.add("author", "italic", "line-under", "capitalized");
     author.textContent = `Written By ${post.author.name}`;
 
     const title = document.createElement("p");
-    title.classList.add("display-1");
+    title.classList.add("display-1", "single-post");
     title.textContent = `${post.title}`;
 
     const description = document.createElement("p");
-    description.className = "description";
+    description.classList.add("description", "single-post");
     description.textContent = `${post.body}`;
 
     const postTags = document.createElement("div");
