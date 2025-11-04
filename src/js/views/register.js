@@ -1,4 +1,5 @@
 import { onRegister } from "../ui/auth/register.mjs";
+import { navToggler } from "../ui/nav/navToggler.mjs";
 import { load } from "../utilities/storage.mjs";
 
 
@@ -15,6 +16,13 @@ function initializeRegister() {
     setTimeout(() => {
       window.location.href = "/profile/";
     }, 1000);
+  }
+
+  const header = document.getElementById("header");
+  if (header) {
+    navToggler();
+  } else {
+    console.error("No #header element located in the DOM");
   }
  
   const form = document.getElementById("registerForm");

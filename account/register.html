@@ -35,83 +35,83 @@
     <main>
         <section>
           <div class="form-container">
-            <h1 class="display-1">Join Vinterest!</h1>
+            <h1 class="display-1 centered">Join Vinterest!</h1>
             <div id="userSuccess" class="invisible" role="alert" aria-live="polite"></div>
-            <form name="register" id="registerForm" aria-describedby="userSuccess" class="container flex justify-center items-center flex-col">
-                <fieldset class="fieldset">
-                    <div class="form-item">
-                        <label for="username" class="label-base">Name</label>
-                        <input
-                        id="username"
-                        name="username"
-                        type="text"
-                        placeholder="Create a username"
-                        required
-                        minlength="1"
-                        maxlength="30"
-                        pattern="^[a-zA-Z0-9_]{1,30}$"
-                        title="Username can only include letters, numbers, and underscores"
-                        aria-required="true"
-                        aria-label="Username"
-                        inputmode="text"
-                        autocomplete="off"/>
-                        <p class="error-message" aria-live="polite"></p>
-                    </div>
-                    <div class="form-item">
-                        <label for="email" class="label-base">Email</label>
-                        <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="email@stud.noroff.no"
-                        required
-                        pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
-                        title="Must be a noroff.no or stud.noroff.no email address"
-                        aria-required="true"
-                        aria-label="Email address"
-                        inputmode="email"
-                        autocomplete="email"/>
-                        <p class="error-message" aria-live="polite"></p>
-                    </div>
-                </fieldset>
-                <fieldset class="fieldset">
-                    <div class="form-item">
-                        <label for="password" class="label-base">Password</label>
-                        <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        placeholder="Create password"
-                        required
-                        minlength="8"
-                        maxlength="30"
-                        title="Password must be at least 8 characters"
-                        aria-required="true"
-                        aria-label="Password"
-                        inputmode="text"
-                        autocomplete="new-password"/>
-                        <p class="error-message" aria-live="polite"></p>
-                    </div>
-                    <div class="form-item">
-                        <label for="confirm-password" class="label-base">Confirm password</label>
-                        <input
-                        id="confirm-password"
-                        name="confirm-password"
-                        type="password"
-                        placeholder="Confirm password"
-                        required
-                        minlength="8"
-                        maxlength="30"
-                        title="Enter your chosen password"
-                        aria-required="true"
-                        aria-label="confirm-password"
-                        inputmode="text"
-                        autocomplete="off"/>
-                        <p class="error-message" aria-live="polite"></p>
-                    </div>
-                </fieldset>
+            <form name="register" id="registerForm" aria-describedby="userSuccess" class="form user">
+                <div class="form-item">
+                    <label for="username" class="label-base">Name</label>
+                    <input
+                    id="username"
+                    class="input-base"
+                    name="username"
+                    type="text"
+                    placeholder="Create a username"
+                    required
+                    minlength="1"
+                    maxlength="30"
+                    pattern="^[a-zA-Z0-9_]{1,30}$"
+                    title="Username can only include letters, numbers, and underscores"
+                    aria-required="true"
+                    aria-label="Username"
+                    inputmode="text"
+                    autocomplete="off"/>
+                    <p class="error-message" aria-live="polite"></p>
+                </div>
+                <div class="form-item">
+                    <label for="email" class="label-base">Email</label>
+                    <input
+                    id="email"
+                    class="input-base"
+                    name="email"
+                    type="email"
+                    placeholder="email@stud.noroff.no"
+                    required
+                    pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+                    title="Must be a noroff.no or stud.noroff.no email address"
+                    aria-required="true"
+                    aria-label="Email address"
+                    inputmode="email"
+                    autocomplete="email"/>
+                    <p class="error-message" aria-live="polite"></p>
+                </div>
+                <div class="form-item">
+                    <label for="password" class="label-base">Password</label>
+                    <input
+                    id="password"
+                    class="input-base"
+                    name="password"
+                    type="password"
+                    placeholder="Create password"
+                    required
+                    minlength="8"
+                    maxlength="30"
+                    title="Password must be at least 8 characters"
+                    aria-required="true"
+                    aria-label="Password"
+                    inputmode="text"
+                    autocomplete="new-password"/>
+                    <p class="error-message" aria-live="polite"></p>
+                </div>
+                <div class="form-item">
+                    <label for="confirm-password" class="label-base">Confirm password</label>
+                    <input
+                    id="confirm-password"
+                    class="input-base"
+                    name="confirm-password"
+                    type="password"
+                    placeholder="Confirm password"
+                    required
+                    minlength="8"
+                    maxlength="30"
+                    title="Enter your chosen password"
+                    aria-required="true"
+                    aria-label="confirm-password"
+                    inputmode="text"
+                    autocomplete="off"/>
+                    <p class="error-message" aria-live="polite"></p>
+                </div>
                 <div class="flex-S">
-                    <button type="submit" class="flex-2 btn-primary">Register</button>
+                    <button type="submit" class="mx-auto btn-primary">Register</button>
                 </div>
             </form>
           </div>

@@ -12,8 +12,9 @@ export function userNav() {
     "logo",
   );
   const logoImage = document.createElement("img");
-  logoImage.src = "assets/logo/vinterst-logotype.svg";
+  logoImage.src = "/assets/logo/vinterst-logotype.svg";
   logoImage.alt = "Vinterest Logo";
+  logoImage.style.width = "150px";
   logoContainer.appendChild(logoImage);
 
   const pcNav = document.createElement("nav");
