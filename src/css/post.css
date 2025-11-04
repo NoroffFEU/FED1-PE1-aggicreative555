@@ -13,7 +13,6 @@
     height: fit-content;
     display: flex;
     flex-direction: row;
-    transition: all 0.3s ease-in-out;
     cursor: pointer;
     border-radius: .5rem;
     overflow: hidden;
@@ -27,7 +26,6 @@
  {
     background-color: var(--clr-white);
     letter-spacing: 5%;
-    transition: all 0.3s ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
 }
@@ -54,35 +52,51 @@
     background: #000;
     opacity: 0%;
     pointer-events: none;
-    transition: all 0.3s ease-in-out;
 }
 
 .post-container:hover .post-img-overlay {
    opacity: 20%;
 }
 
+.pic-mini-container {
+    position: relative;
+    max-width: 230px;
+    min-width: 150px;
+    margin: auto;
+    overflow: hidden;
+    height: 100%;
+    margin-block: 1rem;
+}
+
+.pic-mini {
+    transform: scale(200%);
+}
 
 .main-content {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    max-width: 400px;
+    min-width: 200px;
     gap: 2rem;
     justify-content: space-between;
-    padding-bottom: 2rem;
+    padding-bottom: 4rem;
     padding-top: 1rem;
     padding-inline:2rem;
     height: fit-content;
+    
 }
 
-.main-content > .title-content {
+.title-content {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    flex-direction: row;
+    gap: 1rem;
     align-items: center;
     width: 100%;
+    margin-inline: 2rem;
+    margin-bottom: 2rem;
 }
 
-.title-content > .description {
+.main-content > .description {
     display: -webkit-box;            
     -webkit-box-orient: vertical;     
     -webkit-line-clamp: 2;            
@@ -105,6 +119,11 @@
     color: var(--clr-grey-3);
 }
 
+.content-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
 .postId-container {
     height: 100%;
     display: flex;
@@ -123,6 +142,13 @@
 .postId-container > .user-container {
     display: flex;
     flex-direction: row;
+    max-width: 230px;
+    min-width: 150px;
+}
+
+.postId-container > .user-content {
+    display: flex;
+    flex-direction: row;
     border: solid 1px black;
     justify-content: space-between;
     padding-inline: 1rem;
@@ -137,6 +163,8 @@
     width: 100%;
 }
 
+
+
 @media (max-width:68em) {
     .post-container {
         flex-direction: column;
@@ -147,6 +175,20 @@
 
     .main-content {
         width: 100%;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .postId-container > .flex-XS-col {
+        align-items: center;
+    }
+
+    .title-content {
+        flex-direction: column;
     }
 
     .post-img-container {

@@ -9,9 +9,12 @@ export function postIdTemplate(post) {
     const postId = `${post.id}`;
 
     const mainContainer = document.createElement("div");
-    mainContainer.className = "postId-container";
+    mainContainer.classList.add("postId-container", "animate-resize");
 
     mainContainer.dataset.id = `${post.id}`;
+
+    const content = document.createElement("div");
+    content.classList.add("flex-XS-col");
 
     const pictureFrame = document.createElement("div");
     pictureFrame.classList.add(
@@ -33,56 +36,91 @@ export function postIdTemplate(post) {
     pic.setAttribute("aria-label", `${post.media.alt}`);
     const overlay = document.createElement("div");
     overlay.classList.add(
-        "post-img-overlay"
+        "post-img-overlay",
+        "animate-resize"
     );
+
+    const picMiniContainer = document.createElement("div");
+    picMiniContainer.classList.add("pic-mini-container");
+    
+    const picMini = document.createElement("img");
+    picMini.classList.add("img", "pic-mini");
+    const placeholderImageMini =
+        "https://unsplash.com/photos/grayscale-photo-of-man-and-dog-VvSY-fOx6pw";
+        if (!post.media?.url || post.media.url.includes("example.com")) {
+            picMini.src = placeholderImageMini;
+        } else {
+            picMini.src = post.media.url;
+        }
+    picMini.alt = `Minature image: ${post.media.alt || "Minature image of main image"}`;
+    picMini.setAttribute("aria-label", `Miniature picture: ${post.media.alt}`);
+    
+    picMiniContainer.appendChild(picMini);
 
     const shareContainer = document.createElement("div");
     shareContainer.classList.add("share-button-position");
     shareContainer.appendChild(shareButton());
+
+
     pictureFrame.appendChild(pic);
-    pictureFrame.appendChild(shareContainer);
     pictureFrame.appendChild(overlay);
 
     const mainContent = document.createElement("div");
     mainContent.classList.add(
         "main-content",
+        "animate-resize"
     );
 
     const titleContent = document.createElement("div");
     titleContent.classList.add(
-        "title-content"
+        "title-content",
+        "animate-resize"
     );
     const title = document.createElement("p");
-    title.className = "display-1";
+    title.classList.add("display-1");
     title.textContent = `${post.title}`;
 
-    titleContent.append(title);
+    titleContent.append(shareContainer, title);
 
     const description = document.createElement("p");
     description.classList.add("body-text", "py-4", "mb-6");
     description.textContent = `${post.body}`;
+
+    const contentWrapper = document.createElement("div");
+    contentWrapper.classList.add(
+        "content-wrapper",
+        "animate-resize"
+    );
     
     const userDetailsContainer = document.createElement("div");
     userDetailsContainer.classList.add(
-        "user-container"
+        "user-container",
+        "animate-resize"
     );
+
+    const userTitle = document.createElement("h2");
+    userTitle.classList.add("subtitle-2", "all-caps");
+    userTitle.textContent = "Author"
+
     const userDetailsContent = document.createElement("div");
     userDetailsContent.classList.add(
-        "user-content"
+        "user-content",
+        "animate-resize"
     );
 
     const author = `${post.author.name}`;
     const username = document.createElement("p");
     username.classList.add(
-        "heading-3"
+        "heading-3", "capitalized", "line-under"
     );
-
     username.textContent = author;
+
     const userEmail = document.createElement("p");
-    userEmail.classList.add("caption", "italic", "txt-color-grey");
+    userEmail.classList.add("caption", "italic", "txt-color-grey", "line-under");
     userEmail.textContent = `${post.author.email}`;
+
     const userBio = document.createElement("p");
-    userBio.classList.add("caption");
+    userBio.classList.add("caption", "line-under");
     userBio.textContent = post.author.bio?.trim()
         ? post.author.bio
         : "Hi, I'm a vintage blogger!";
@@ -94,33 +132,23 @@ export function postIdTemplate(post) {
 
     userContentContainer.append(username, userEmail, userBio);
 
-    
-    const userIconContainer = document.createElement("div");
-    userIconContainer.classList.add(
-        "img-circle-L"
-    );
 
-    userIconNameContainer.append(userIconContainer, userContentContainer);
+    userIconNameContainer.append(userContentContainer);
 
-    const userAvatar = document.createElement("img");
-    userAvatar.classList.add(
-        "img"
-    );
-    userAvatar.src = `${post.author.avatar.url}`;
-    userAvatar.alt = `${post.author.avatar.alt || "User avatar"}`;
-    userAvatar.setAttribute("aria-label", `${post.author.avatar.alt}`);
 
     const updateContainer = document.createElement("div");
     if (usernameStorage === author ) {
     updateContainer.append(updateButton(postId));
     }
+    content.append(titleContent, contentWrapper)
 
-    userIconContainer.appendChild(userAvatar);
+    contentWrapper.append(mainContent, userDetailsContainer);
+
     userDetailsContent.append(userIconNameContainer);
-    userDetailsContainer.append(userDetailsContent);
+    userDetailsContainer.append( userTitle, userDetailsContent, picMiniContainer);
 
-    mainContent.append(titleContent, description, userDetailsContainer, updateContainer);
-    mainContainer.append(pictureFrame, mainContent);
+    mainContent.append(description, updateContainer);
+    mainContainer.append(pictureFrame, content);
 
     return mainContainer;
 }

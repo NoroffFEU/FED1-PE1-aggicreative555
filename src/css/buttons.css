@@ -4,20 +4,21 @@
     cursor: pointer;
     box-sizing: border-box;
     display: flex;
-    width: 15.5rem;
-    padding: 1rem 1rem;
+    padding: 1rem 4rem;
     justify-content: center;
     align-items: center;
     gap: 0.5rem; 
-    border-radius: 0.5rem;
-    border: 0;
+    text-transform: uppercase;
+    border: 2px solid var(--clr-white);
+    outline: 1px solid var(--clr-grey-400);
     font-family: var(--ff-primary);
-    font-size: var(--fs-button);
+    font-size: var(--fs-body);
     font-weight: var(--fw-bold);
+    color: var(--clr-white);
 
     background-color: var(--clr-accent-red);
 
-    transition: 0.2s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 
 .btn-primary:disabled,
@@ -27,7 +28,8 @@
 
 .btn-primary:hover,
 .btn-primary:focus {
-    box-shadow: -12px 12px 0px 0px var(--clr-black);
+   outline: 4px solid var(--clr-grey-400);
+   letter-spacing: .05em;
 }
 
 .btn-container {
@@ -42,26 +44,27 @@
     cursor: pointer;
     box-sizing: border-box;
     display: flex;
-    width: 15.5rem;
-    padding: 1rem 1rem;
+    padding: 1rem 4rem;
     justify-content: center;
     align-items: center;
     gap: 0.5rem; 
-    border-radius: 0.5rem;
-    border: 0;
-    background-color: var(--clr-white);
-    border: 0.2rem solid var(--clr-black);
-
+    text-transform: uppercase;
+    border: 2px solid var(--clr-white);
+    outline: 1px solid var(--clr-grey-400);
     font-family: var(--ff-primary);
-    font-size: var(--fs-button);
+    font-size: var(--fs-body);
     font-weight: var(--fw-bold);
+    color: var(--clr-grey-400);
 
-    transition: 0.2s ease-in-out;
+    background-color: var(--clr-white);
+
+    transition: all .2s ease-in-out;
 }
 
 .btn-secondary:hover,
 .btn-secondary:focus {
-    box-shadow: -12px 12px 0px 0px var(--clr-accent-red);  
+    outline: 4px solid var(--clr-grey-400);
+    letter-spacing: .05em;  
 }
 
 .button-width {
@@ -76,12 +79,12 @@
     display: flex;
     border-radius: 50%;
     background-color: var(--clr-white);
-    padding: .5rem 0rem;
-    margin: 2rem 1rem;
+    padding: .5rem .5rem;
+    margin: 1rem 1rem;
     justify-content: center;
     align-items: center;
-    border: 0;
-    background-color: transparent;
+    border: 2px solid var(--clr-white);
+    outline: 1px solid var(--clr-grey-400);
 
     font-family: var(--ff-primary);
     font-size: var(--fs-caption);
@@ -91,15 +94,11 @@
 
 .btn-XS:hover, 
 .share-button-position:hover {
-    background-color: var(--clr-white);
-    transform: translateY(-5%);
-    transition: all .2 ease-in-out;
+    outline: 4px solid var(--clr-grey-400);
+    letter-spacing: .05em; 
 } 
 
 .share-button-position {
-    position: absolute;
-    top: 5%;
-    right: 5%;
     background-color: var(--clr-grey-2);
     border-radius: 50%;
     height: 3rem;

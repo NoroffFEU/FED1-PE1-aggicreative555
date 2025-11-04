@@ -285,4 +285,34 @@ p, .body {
     display: hidden;
 }
 
+
+.line-under {
+    position: relative;
+    padding-bottom: 0.25rem;
+}
+
+.line-under::after {
+    content: "";
+    position: absolute;
+    bottom: -5%;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: var(--clr-grey-100);
+    pointer-events: none;
+}
+
+.with-line[aria-hidden="true"]::after {
+  display: none;
+}
+
+.txt-color-grey {
+    color: var(--clr-grey-200);
+}
+
+.animate-resize {
+    transition: all 0.3s ease-in-out;
+    will-change: transform, width, height, opacity;
+}
+
 /* UTILITY CLASSES */

@@ -3,7 +3,8 @@ import { formatDate } from "../../utilities/formatDate.mjs";
 export function singlePost(post) {
     const mainContainer = document.createElement("a");
     mainContainer.classList.add(
-        "post-container"
+        "post-container",
+        "animate-resize"
     );
     mainContainer.dataset.id = `${post.id}`;
     mainContainer.href = `/post/?id=${post.id}`;
@@ -12,7 +13,8 @@ export function singlePost(post) {
 
     const pictureFrame = document.createElement("div");
     pictureFrame.classList.add(
-        "post-img-container"
+        "post-img-container",
+        "animate-resize"
     );
     const pic = document.createElement("img");
     pic.classList.add("img");
@@ -27,14 +29,16 @@ export function singlePost(post) {
     pic.setAttribute("aria-label", `${post.media.alt}`);
     const overlay = document.createElement("div");
     overlay.classList.add(
-        "post-img-overlay"
+        "post-img-overlay",
+        "animate-resize"
     );
     pictureFrame.appendChild(pic);
     pictureFrame.appendChild(overlay);
 
     const mainContent = document.createElement("div");
     mainContent.classList.add(
-        "main-content"
+        "main-content",
+        "animate-resize"
     );
 
     const titleContent = document.createElement("div");
