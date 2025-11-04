@@ -27,6 +27,12 @@ export function postFormTemplate({ isEdit = false, postData = {} } = {}) {
         "postId-img-container"
     );
 
+    const imgPreview = document.createElement("img");
+    imgPreview.className = "img";
+    imgPreview.alt = "Post image preview";
+    imgPreview.src = 
+    postData.media?.url || "https://cdn.pixabay.com/photo/2020/08/31/16/39/ephemera-5532941_1280.jpg";
+
     pictureFrame.append(imgPreview);
 
     const mediaInputContainer = document.createElement("div");
@@ -157,6 +163,15 @@ export function postFormTemplate({ isEdit = false, postData = {} } = {}) {
     postData.media?.url || "https://cdn.pixabay.com/photo/2020/08/31/16/39/ephemera-5532941_1280.jpg";
 
     picMiniContainer.appendChild(miniImgPreview);
+
+    // Image preview on main image and mini
+    mediaUrlInput.addEventListener("mouseleave", () => {
+        const url = mediaUrlInput.value.trim();
+        if (url.startsWith("http")) {
+            imgPreview.src = url;
+            miniImgPreview.src = url;
+        }
+    })
 
     const userDetailsContainer = document.createElement("div");
     userDetailsContainer.classList.add(
