@@ -27,6 +27,7 @@ function buildSlide (post, roleClass = "") {
 		href: `/post/?id=${encodeURIComponent(post.id)}`,
 		className: `carousel-item ${roleClass}`, 
 		"aria-label": post.title ? `"Open post ${post.title}"` : "Open post",
+		"title": `Go to ${post.title}`,
 	});
 
 	const img = createElement("img", {
