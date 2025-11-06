@@ -2,6 +2,10 @@ import { readPosts } from "../../api/posts/read.mjs";
 import { renderMultiplePosts } from "./renderPost.mjs";
 
 
+const POSTS_PER_PAGE = 12;
+let currentPage = 1;
+let totalPages = 1;
+
 /**
  * Load multiple posts for a given page number and update pagination UI.
  *
@@ -13,20 +17,33 @@ import { renderMultiplePosts } from "./renderPost.mjs";
  * @example
  * loadMultiplePosts(2);
  *
- * @throws Will log an error to the console if fetching posts fails.
- */
+ * @description
+ * Fetches posts from the API with pagination parameters.
+ * Renders them using `renderMultiplePosts()` and updates the pagination UI
+ * with `updatePagination()`. Always loads 12 posts per page.
+ *
+ * @throws {Error} Logs an error if the API request fails.
+*/
 
-let currentPage = 1;
-let totalPages = 10;
+export async function loadMultiplePosts(page = 1) {
+  try {
+    const currentPage = page;
+    const posts = await readPosts({ page, limit: POSTS_PER_PAGE });
 
-export async function loadMultiplePosts() {
-    try {
-        const posts = await readPosts({ });
-        renderMultiplePosts(posts);
-        updatePagination();
-    } catch (error) {
-        console.error("Failed to load posts:", error);
+
+
+    if (Array.isArray(posts)) {
+      totalPages = Math.ceil(posts.length / POSTS_PER_PAGE) || 1;
+    } else if (posts.meta?.totalCount) {
+      totalPages = Math.ceil(posts.meta.totalCount / POSTS_PER_PAGE)
     }
+
+    renderMultiplePosts(posts);
+    updatePagination();
+
+  } catch (error) {
+    console.error("Failed to load posts:", error);
+  }
 }
 
 /**
@@ -51,47 +68,22 @@ export function updatePagination() {
     pageButton.textContent = i;
     pageButton.className = `${
       i === currentPage
-        ? "btn-XS underline"
-        : "btn-XS txt-color-grey "
+        ? "page-button page-underline"
+        : "page-button"
     }`;
 
+    pageButton.disabled = i === currentPage;
+
     pageButton.addEventListener("click", () => {
-      loadMultiplePosts(i);
-      window.scrollTo({
-        top: 50,
-        behavior: "smooth",
-      });
+      if ( i !== currentPage) {
+        loadMultiplePosts(i);
+        window.scrollTo({
+          top: 50,
+          behavior: "smooth",
+        });
+      }
     });
 
     pageNumbersContainer.appendChild(pageButton);
   }
-
-  document.getElementById("prevPage").disabled = currentPage === 1;
-
-  document.getElementById("nextPage").disabled = currentPage === totalPages;
-}
-
-/**
- * Set up event listeners for pagination navigation (Prev/Next buttons).
- *
- * @function setupPagination
- * @returns {void}
- *
- * @example
- * setupPagination();
- *
- * @throws Will not throw but assumes 'prevPage' and 'nextPage' elements exist in the DOM.
- */
-export function setupPagination() {
-  document.getElementById("nextPage").addEventListener("click", () => {
-    if (currentPage < totalPages) {
-      loadMultiplePosts(currentPage + 1);
-    }
-  });
-
-  document.getElementById("prevPage").addEventListener("click", () => {
-    if (currentPage > 1) {
-      loadMultiplePosts(currentPage - 1);
-    }
-  });
 }

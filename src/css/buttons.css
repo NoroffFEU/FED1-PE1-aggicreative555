@@ -97,6 +97,38 @@
     letter-spacing: .05em; 
 } 
 
+.page-button {
+    cursor: pointer;
+    box-sizing: border-box;
+    display: flex;
+    background-color: var(--clr-white);
+    margin-inline: 1rem;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    color: var(--clr-grey-400);
+
+    font-family: var(--ff-primary);
+    font-size: var(--fs-body);
+
+    transition: all 0.2s ease-in-out;
+}
+
+.page-button:hover,
+.page-button:focus {
+    transform: translateY(-5%);
+}
+
+.page-button:disabled {
+    cursor: not-allowed;
+}
+
+.page-underline {
+    text-decoration: underline;
+    text-decoration-color: var(--clr-accent-red);
+    text-decoration-thickness: 1px;
+}
+
 .share-button-position {
     border-radius: 50%;
     height: 3rem;
