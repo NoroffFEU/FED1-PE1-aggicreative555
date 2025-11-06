@@ -1,3 +1,25 @@
+/* Fix autofill overriding form input styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px var(--clr-white) inset !important;
+    box-shadow: 0 0 0px 1000px var(--clr-white) inset !important;
+    -webkit-text-fill-color: var(--clr-black) !important;
+    transition: background-color 5000s ease-in-out 0s;
+    font: var(--ff-primary);
+    color: var(--clr-grey-400);
+    font-size: var(--fs-body);
+}
+input:autofill {
+    filter: none;
+    background-color: var(--clr-white) !important;
+    color: var(--clr-black) !important;
+    font: var(--ff-primary) !important;
+    color: var(--clr-grey-400) !important;
+    font-size: var(--fs-body) !important;
+}
+
 .form-item {
     display: flex;
     flex-direction: column;
@@ -33,6 +55,9 @@
     border-width: 0 0 2px;
     border-color: var(--clr-grey-400);
     background-color: var(--clr-white);
+    font: var(--ff-primary);
+    color: var(--clr-grey-400);
+    font-size: var(--fs-body);
     padding: .5rem 1rem;
 }
 
@@ -46,6 +71,10 @@ textarea {
     max-height: 800px; 
     width: 100%;
     resize: vertical;
+}
+
+::placeholder {
+    color: var(--clr-grey-100);
 }
 
 .outline-correct {
@@ -63,5 +92,10 @@ textarea {
 @media (max-width:68em) {
     .form.user {
         margin-inline: 1rem;
+    }
+    #loginForm, 
+    #registerForm {
+        margin-inline: auto;
+        
     }
 }
