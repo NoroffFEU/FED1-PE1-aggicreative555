@@ -43,7 +43,6 @@ async function initializeEdit() {
         console.error("Failed to load post:", error);
         const container = document.querySelector("#formContainer");
         container.textContent = "Failed to load post for editing. Please try again later."
-        container.classList.add = ("flex-S-row", "heading-3");
     }
 
     const editForm = postFormTemplate({ isEdit: true, postData });

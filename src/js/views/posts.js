@@ -1,6 +1,6 @@
 import { readPost, readPosts } from "../api/posts/read.mjs";
 import { navToggler } from "../ui/nav/navToggler.mjs";
-import { loadMultiplePosts, setupPagination } from "../ui/post/pagination.mjs";
+import { loadMultiplePosts } from "../ui/post/pagination.mjs";
 import { postIdTemplate } from "../ui/post/postId.mjs";
 import { renderMultiplePosts } from "../ui/post/renderPost.mjs";
 import { save } from "../utilities/storage.mjs";
@@ -49,7 +49,6 @@ export async function loadPosts() {
         const posts = await readPosts();
         renderMultiplePosts(posts);
         loadMultiplePosts();
-        setupPagination();
         save("cachedPosts", JSON.stringify(posts));
     } else if (postId) {
         const pagination = document.getElementById("pagination");
