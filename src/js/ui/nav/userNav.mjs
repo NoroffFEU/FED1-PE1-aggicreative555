@@ -6,7 +6,7 @@ export function userNav() {
   );
 
   const logoContainer = document.createElement("a");
-  logoContainer.href = "./index.html";
+  logoContainer.href = "/index.html";
   logoContainer.setAttribute("aria-label", "View home page");
   logoContainer.classList.add(
     "logo",
@@ -73,7 +73,7 @@ export function userNav() {
   const mobileExploreLink = document.createElement("a");
   mobileExploreLink.setAttribute("aria-label", "View blog posts made by our community!");
   mobileExploreLink.href = "/post/index.html";
-  mobileExploreLink.textContent = "Explore Posts";
+  mobileExploreLink.textContent = "Explore";
   mobileExploreLink.classList.add(
     "mobile-nav-link",
   );

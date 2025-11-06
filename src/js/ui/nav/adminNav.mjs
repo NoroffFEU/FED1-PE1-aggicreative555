@@ -1,3 +1,5 @@
+import { setLogoutListener } from "../../utilities/logout.mjs";
+
 export function adminNav() {
   const headerContainer = document.createElement("div");
 
@@ -38,6 +40,10 @@ export function adminNav() {
   );
   createLink.textContent = "Create";
 
+  const logoutContainer = document.createElement("div");
+  setLogoutListener(logoutContainer);
+
+
   const mobileNav = document.createElement("nav");
   mobileNav.classList.add("mobile-nav");
   const menuButton = document.createElement("button");
@@ -68,7 +74,7 @@ export function adminNav() {
   const mobileExploreLink = document.createElement("a");
   mobileExploreLink.setAttribute("aria-label", "View blog posts made by our community!");
   mobileExploreLink.href = "/post/index.html";
-  mobileExploreLink.textContent = "Explore Posts";
+  mobileExploreLink.textContent = "Explore";
   mobileExploreLink.classList.add(
     "mobile-nav-link",
   );
@@ -84,11 +90,14 @@ export function adminNav() {
     "mobile-nav-link",
   );
 
-  pcNav.append(exploreLink, createLink, );
+  const mobileLogout = document.createElement("div");
+  setLogoutListener(mobileLogout);
+
+  pcNav.append(exploreLink, createLink, logoutContainer);
 
   mobileExplore.appendChild(mobileExploreLink);
   mobileCreate.appendChild(mobileCreateLink);
-  menuBox.append(mobileExplore, mobileCreate);
+  menuBox.append(mobileExplore, mobileCreate, mobileLogout);
   mobileNav.append(menuButton, menuBox);
   headerContainer.append(logoContainer, pcNav, mobileNav);
 
