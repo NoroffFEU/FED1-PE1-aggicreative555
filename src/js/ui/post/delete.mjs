@@ -18,7 +18,9 @@ export async function onDeletePost(event) {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
     const messageContainer = document.getElementById("userSuccess");
-    messageContainer.style.display = "block";
+    messageContainer.innerHTML = "";
+    messageContainer.classList.remove("invisible");
+    messageContainer.classList.add("message-container");
 
     if (!id) {
         console.error("Post ID is required for deleting.");
@@ -31,12 +33,17 @@ export async function onDeletePost(event) {
         if (result.ok) {
         document.querySelector("#formContainer")?.remove(); // Hide content instantly
         // Redirect user to profile where profile posts are shown.
+        messageContainer.innerHTML = "";
+        messageContainer.classList.remove("invisible");
+        messageContainer.classList.add("message-container");
         messageContainer.innerHTML = "Post has been removed. Redirecting...";
         setTimeout(() => (window.location.href = "/index.html"), 1500);
         }
     } catch (error) {
         console.error("Error deleting post:", error);
-        messageContainer.innerHTML =
-        "Error removing post. Please try again or refresh the page.";
+        messageContainer.classList.remove("invisible");
+        messageContainer.classList.add("message-container");
+        messageContainer.innerHTML = "";
+        messageContainer.innerHTML = "Error removing post. Please try again or refresh the page.";
     }
 }

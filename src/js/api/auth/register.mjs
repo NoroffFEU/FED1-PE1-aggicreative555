@@ -51,6 +51,8 @@ export async function register({ name, email, password }) {
 
     if (response.ok) {
       userSuccess.classList.remove("invisible");
+      userSuccess.classList.add("message-container");
+      userSuccess.innerHTML = "";
       userSuccess.innerHTML = `User created successfully, logging in...`;
       setTimeout(() => {
         login({ email, password });
@@ -58,10 +60,14 @@ export async function register({ name, email, password }) {
       return result;
     } else {
       userSuccess.classList.remove("invisible");
+      userSuccess.classList.add("message-container");
+      userSuccess.innerHTML = "";
       userSuccess.innerHTML = errorMessage;
 
       setTimeout(() => {
         userSuccess.classList.add("invisible");
+        userSuccess.classList.remove("message-container");
+        userSuccess.innerHTML = "";
         userSuccess.innerHTML = ""; // Clear
       }, 4000);
     }

@@ -19,6 +19,7 @@
 import { save } from "../../utilities/storage.mjs";
 import { API_AUTH_LOGIN } from "../constants.mjs";
 import { headers } from "../headers.mjs";
+import { createApiKey } from "./apiKey.mjs";
 
 
 export async function login({ email, password }) {
@@ -44,27 +45,39 @@ export async function login({ email, password }) {
 
     if (response.ok) {
       userSuccess.classList.remove("invisible");
+      userSuccess.classList.add("message-container");
+      userSuccess.innerHTML = "";
       userSuccess.innerHTML = `Login sucessful! Redirecting to home page...`;
         setTimeout(() => {
         window.location.href = "/";
         }, 1000);
     } else {
       userSuccess.classList.remove("invisible");
+      userSuccess.classList.add("message-container");
+      userSuccess.innerHTML = "";
       userSuccess.innerHTML = errorMessage;
 
       setTimeout(() => {
+        userSuccess.classList.remove("message-container");
         userSuccess.classList.add("invisible");
         userSuccess.innerHTML = ""; // Clear
       }, 2000);
     }
 
     const {
-      data: { apiKey, accessToken, name, ...restUserData },
+      data: { accessToken, name, ...restUserData },
     } = result;
 
     save("accessToken", accessToken);
     save("userName", name);
     save("user", { name, ...restUserData });
+
+    let apiKey = localStorage.getItem("apiKey");
+
+    if (!apiKey) {
+      apiKey = await createApiKey(accessToken);
+      localStorage.setItem("apiKey", apiKey);
+    }
 
   } catch (error) {
     console.error("Login error:", error);

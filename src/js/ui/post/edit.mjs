@@ -39,7 +39,9 @@ export async function onEditPost(event) {
         const newPost = await updatePost(id, postData);
 
         if (newPost && newPost.data && newPost.data.id) {
+        messageContainer.innerHTML = "";   
         messageContainer.classList.remove("invisible");
+        messageContainer.classList.add("message-container");
         messageContainer.innerHTML = "Post created successfully!";
         // Redirect to the single post view with the new post ID
           setTimeout(() => {
@@ -51,7 +53,9 @@ export async function onEditPost(event) {
         }
     } catch (error) {
         console.error("Error creating post:", error);
+        messageContainer.innerHTML = "";
         messageContainer.classList.remove("invisible");
+        messageContainer.classList.add("message-container");
         messageContainer.innerHTML =
         "Failed to create post, check your fields and try again";
         setTimeout(() => {

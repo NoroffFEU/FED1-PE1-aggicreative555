@@ -46,7 +46,6 @@ export async function updatePost(id, body) {
 		});
 
 		const post = await response.json();
-		console.log('postdata:', post);
 
 		if (!response.ok) {
 			console.error(`Failed to update post:${post?.message}`);

@@ -40,7 +40,6 @@ export async function createPost(body) {
 	});
 
 	const post = await response.json();
-	console.log('postdata:', post);
 
 	if (!response.ok) {
 		console.error(`Failed to create post:${post?.message}`);

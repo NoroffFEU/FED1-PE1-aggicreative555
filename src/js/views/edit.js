@@ -12,6 +12,7 @@ import { onEditPost } from "../ui/post/edit.mjs";
 
 async function initializeEdit() {
     const token = localStorage.getItem("accessToken");
+    const message = document.getElementById("userSuccess");
 
     if (!token) {
         alert("You must be logged in to edit a post");
@@ -38,11 +39,11 @@ async function initializeEdit() {
     let postData; 
     try {
         postData = await readPost(postId);
-        console.log("post for editing", postData)
     } catch (error) {
         console.error("Failed to load post:", error);
-        const container = document.querySelector("#formContainer");
-        container.textContent = "Failed to load post for editing. Please try again later."
+        message.classList.remove("invisible");
+        message.classList.add("message-container");
+        message.textContent = "Failed to load post for editing. Please try again later."
     }
 
     const editForm = postFormTemplate({ isEdit: true, postData });
@@ -50,35 +51,52 @@ async function initializeEdit() {
     container.innerHTML = "";
     container.appendChild(editForm);
 
-    editForm.addEventListener("submit", onEditPost );
-
     const titleInput = document.getElementById("title");
     const descriptionInput = document.getElementById("body");
     const imageInput = document.getElementById("media-url");
     const imageAltInput = document.getElementById("media-alt");
 
-    validateField(
+    const titleValid = validateField(
     titleInput,
     isValidTitle,
     "The title of your post can only inlude letters and be between 1 - 100 characters",
     );
     
-    validateField(
+    const descValid = validateField(
     descriptionInput,
     isValidDescription,
     "The post body has to be more than 10 characters",
     );
-    validateField(
+    const imageValid = validateField(
     imageInput,
     isValidUrl,
     "Please add a valid image URL starting with https://",
     );
-    validateField(
+    const imageAltValid = validateField(
     imageAltInput,
     isValidImageAlt,
     "Write a small description of the image",
     );
+    
+    editForm.addEventListener("submit", (e) => {
+        e.preventDefault();
 
+        const allValid = 
+        titleValid() &&
+        descValid() &&
+        imageValid() &&
+        imageAltValid();
+
+        if (!allValid) {
+            message.innerHTML = "";
+            message.classList.remove("invisible");
+            message.classList.add("message-container");
+            message.textContent = "Please fill in all fields before submitting";
+            return;
+        }
+
+        onEditPost(e);
+    })
 }
 
 initializeEdit();

@@ -85,9 +85,19 @@ textarea {
     outline: 2px solid var(--clr-accent-red);
 }
 
+.error-message {
+    color: var(--clr-accent-red);
+    margin-top: .25rem;
+    margin-bottom: .5rem;
+    width: 100%;
+    max-width: 500px;
+}
+
 .form > .postId-container > .content-wrapper {
     height: fit-content;
 }
+
+
 
 @media (max-width:68em) {
     .form.user {

@@ -28,7 +28,7 @@ export async function readPosts({
 
   try {
     const user = load("user");
-    const username = user?.name;
+    const username = user?.name || "vinterest_1";
     const url = new URL(`${API_POSTS}/${username}`);
 
     if (page) url.searchParams.append("page", page);
@@ -39,7 +39,7 @@ export async function readPosts({
     if (author) url.searchParams.append("author", author);
 
     const response = await fetch(url, {
-      headers: headers({ authRequired: true, apiKeyRequired: true }),
+      headers: headers({ authRequired: false, apiKeyRequired: false }),
       method: "GET",
     });
 
@@ -47,9 +47,8 @@ export async function readPosts({
       throw new Error(`Failed to fetch posts: ${response.statusText}`);
     }
 
-    const { data = [] } = await response.json();
-    console.log(data);
-    return data;
+    const { data = [],  meta = {} } = await response.json();
+    return {data, meta};
   } catch (error) {
     console.error("Error fetching posts:", error);
     throw error;
@@ -72,7 +71,7 @@ export async function readPosts({
 
 export async function readPost(id) {
   const user = load("user");
-  const username = user?.name;
+  const username = user?.name || "vinterest_1";
   if (!id) {
     throw new Error("Post ID is required.");
   }

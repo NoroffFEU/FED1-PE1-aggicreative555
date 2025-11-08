@@ -51,34 +51,55 @@ function initializeCreate() {
     const createForm = postFormTemplate({ isEdit: false, postData });
     document.querySelector("#formContainer").appendChild(createForm);
 
-    createForm.addEventListener("submit", onCreatePost);
-
     const titleInput = document.getElementById("title");
     const descriptionInput = document.getElementById("body");
     const imageInput = document.getElementById("media-url");
     const imageAltInput = document.getElementById("media-alt");
 
-    validateField(
+    const titleValid = validateField(
     titleInput,
     isValidTitle,
     "The title of your post can only inlude letters and be between 1 - 100 characters",
     );
     
-    validateField(
+    const descValid = validateField(
     descriptionInput,
     isValidDescription,
     "The post body has to be more than 10 characters",
     );
-    validateField(
+
+    const imageValid = validateField(
     imageInput,
     isValidUrl,
     "Please add a valid image URL starting with https://",
     );
-    validateField(
+
+    const imageAltValid = validateField(
     imageAltInput,
     isValidImageAlt,
     "Write a small description of the image",
     );
+
+    createForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const allValid = 
+        titleValid() &&
+        descValid() &&
+        imageValid() &&
+        imageAltValid();
+
+        if (!allValid) {
+            const message = document.getElementById("userSuccess");
+            message.innerHTML = "";
+            message.className.remove("invisible");
+            message.className.add("message-container");
+            message.textContent = "Please fill in all fields before submitting";
+            return;
+        }
+
+        onCreatePost(e);
+    })
 
 }
 
