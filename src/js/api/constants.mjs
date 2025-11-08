@@ -10,4 +10,6 @@ export const API_AUTH_LOGIN = `${API_AUTH}/login`;
 
 export const API_AUTH_REGISTER = `${API_AUTH}/register`;
 
+export const API_KEY_FETCH = `${API_AUTH}/create-api-key`;
+
 export const API_POSTS = `${API_BLOG}/posts`;

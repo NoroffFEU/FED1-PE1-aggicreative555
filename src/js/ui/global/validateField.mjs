@@ -16,19 +16,26 @@
  */
 
 export function validateField(input, testFn, errorMessage) {
-  input.addEventListener("input", () => {
-    const isValid = testFn.length === 0 ? testFn() : testFn(input.value);
+    let errorEl = input.nextElementSibling;
+    if (!errorEl || !errorEl.classList.contains("error-message")) {
+    errorEl = document.createElement("p");
+    errorEl.classList.add("caption", "error-message");
+    input.insertAdjacentElement("afterend", errorEl);
+    errorEl.id = `${input.id}-error`;
+    input.setAttribute("aria-describedby", errorEl.id);
+  }
+
+  const checkValidity = () => {
+    const isValid = testFn.length === 0 ? testFn() : testFn(input.value.trim());
     input.setAttribute("aria-invalid", !isValid);
     input.classList.toggle("outline-correct", isValid);
     input.classList.toggle("outline-error", !isValid);
+    errorEl.textContent = isValid ? "" : errorMessage;
+    return isValid;
+  };
 
-    const errorEl = input.nextElementSibling;
-    if (errorEl && errorEl.classList.contains("error-message")) {
-      if (!isValid) {
-        errorEl.innerHTML = `${errorMessage}`;
-      } else {
-        errorEl.textContent = "";
-      }
-    }
-  });
+  input.addEventListener("input", checkValidity);
+  input.addEventListener("museleave", checkValidity);
+
+  return checkValidity;
 }

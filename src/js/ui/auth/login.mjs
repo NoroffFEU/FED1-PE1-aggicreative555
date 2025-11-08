@@ -33,7 +33,6 @@ export function onLogin() {
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      console.log('onlogin working')
 
       // Disable submit to prevent spamming.
       const submitButton = form.querySelector('button[type="submit"]');

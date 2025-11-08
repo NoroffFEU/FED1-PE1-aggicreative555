@@ -5,7 +5,7 @@ import { updateButton } from "../buttons/updateButton.mjs";
 
 export function postIdTemplate(post) {
     const user = load("user");
-    const usernameStorage = user.name;
+    const usernameStorage = user?.name;
     const postId = `${post.id}`;
 
     const mainContainer = document.createElement("div");

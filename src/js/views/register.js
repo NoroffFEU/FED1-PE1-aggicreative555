@@ -1,6 +1,5 @@
 import { onRegister } from "../ui/auth/register.mjs";
 import { navToggler } from "../ui/nav/navToggler.mjs";
-import { load } from "../utilities/storage.mjs";
 
 
 /**

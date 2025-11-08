@@ -42,7 +42,7 @@
 .carousel-item.center { 
   transform: translateX(-50%) scale(120%); 
   opacity: 1;
-  transition: transform 450ms ease-in-out;
+  transition: all 450ms ease-in-out;
   z-index: 3;
 }
 
@@ -70,6 +70,7 @@
   opacity: .8;
   background-color: black;
   z-index: 2;
+  transition: all 450ms ease-in-out;
 }
 
 .carousel-item.left::after {
@@ -118,6 +119,7 @@
   transform: translateX(50%) scale(90%);
   opacity: .8;
   z-index: 1;
+  transition: all 450ms ease-in-out;
 }
 
 /* controls */
@@ -181,8 +183,41 @@
 .dot.active { background: var(--clr-accent-red); transform: scale(1.2); }
 
 @media (max-width: 900px) {
-  .carousel-inner { grid-template-columns: 1fr; }
-  .carousel-item.left, .carousel-item.right { display: none; }
-  .control.prev { left: 8px; }
-  .control.next { right: 8px; }
+  .carousel-inner { 
+    grid-template-columns: 1fr; 
+  }
+  .carousel-container { 
+    max-height: 500px;
+    width: 100%;
+  }
+  .carousel-item.left, 
+  .carousel-item.right { 
+    display: none; 
+  }
+  .control.prev { 
+    left: 8px; 
+  }
+  .control.next { 
+    right: 8px; 
+  }
+
+  .dots {
+    margin-inline: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .carousel-item,
+  .carousel-item img,
+  .carousel-item::after {
+    z-index: 1 !important;
+    width: 100%;
+  }
+
+  .control {
+    z-index: 20 !important;
+  }
+
+  .dots {
+    z-index: 20 !important;
+  }
 }

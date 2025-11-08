@@ -8,7 +8,6 @@ async function initializeHome() {
   } else {
     console.error("No #header element located in the DOM");
   }
-
   const postsContainer = document.getElementById("postsContainer");
   if (postsContainer) {
     const title = document.getElementById("postsTitle");
@@ -16,6 +15,7 @@ async function initializeHome() {
     title.textContent = "Featured Posts";
     await renderFeaturedPosts();
   }
+
 
 }
 

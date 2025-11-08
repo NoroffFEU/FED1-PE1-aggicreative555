@@ -334,4 +334,19 @@ p, .body {
     margin-top: 50px;
 }
 
+.message-container {
+    border: var(--clr-accent-red) 2px solid;
+    outline: var(--clr-accent-red) 1px solid;
+    outline-offset: 2px;
+    padding-inline: 2rem ;
+    padding-block: 1rem ;
+    width: 100%;
+    max-width: 800px;
+    margin-inline: auto;
+    margin-block: 2rem;
+    text-align: center;
+    cursor: default;
+    transition: all .4s ease-in-out;
+}
+
 /* UTILITY CLASSES */
