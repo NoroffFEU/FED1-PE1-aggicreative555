@@ -3,8 +3,8 @@ import { renderMultiplePosts } from "./renderPost.mjs";
 
 
 const POSTS_PER_PAGE = 12;
-let currentPage = 1;
 let totalPages = 1;
+let currentPage = 1;
 
 /**
  * Load multiple posts for a given page number and update pagination UI.
@@ -27,18 +27,16 @@ let totalPages = 1;
 
 export async function loadMultiplePosts(page = 1) {
   try {
-    const currentPage = page;
-    const posts = await readPosts({ page, limit: POSTS_PER_PAGE });
+    currentPage = page;
+    const { data, meta } = await readPosts({ page, limit: POSTS_PER_PAGE });
 
-
-
-    if (Array.isArray(posts)) {
-      totalPages = Math.ceil(posts.length / POSTS_PER_PAGE) || 1;
-    } else if (posts.meta?.totalCount) {
-      totalPages = Math.ceil(posts.meta.totalCount / POSTS_PER_PAGE)
+    if (meta.totalCount) {
+      totalPages = Math.ceil(meta.totalCount / POSTS_PER_PAGE);
+    } else  {
+      totalPages = Math.ceil(data.length / POSTS_PER_PAGE) || 1;
     }
 
-    renderMultiplePosts(posts);
+    renderMultiplePosts(data);
     updatePagination();
 
   } catch (error) {

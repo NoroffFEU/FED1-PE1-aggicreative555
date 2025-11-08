@@ -46,7 +46,7 @@ export async function loadPosts() {
         heading.classList.add("display-XL", "centered", "underline");
         heading.textContent = "All Articles";
         title.appendChild(heading);
-        const posts = await readPosts();
+        const { data: posts, meta }= await readPosts();
         renderMultiplePosts(posts);
         loadMultiplePosts();
         save("cachedPosts", JSON.stringify(posts));
@@ -60,7 +60,9 @@ export async function loadPosts() {
     }
   } catch (error) {
     console.error("Error loading post(s):", error);
+    message.innerHTML = "";
     message.classList.remove("invisible");
+    message.classList.add("message-container");
     message.innerHTML =
       "Something went wrong loading posts.Refresh the page...";
   }
