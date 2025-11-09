@@ -19,13 +19,7 @@ export function singlePost(post) {
     const pic = document.createElement("img");
     pic.classList.add("img");
     pic.loading = "lazy";
-    const placeholderImage = "https://cdn.pixabay.com/photo/2020/08/31/16/39/ephemera-5532941_1280.jpg";
-    if (!post.media?.url) {
-        pic.src = placeholderImage;
-    } else {
-        pic.src = post.media.url;
-    }
-    pic.classList.add("img");
+    pic.src = post.media.url;
     pic.alt = `${post.media.alt || "Image related to blog post"}`;
     pic.setAttribute("aria-label", `${post.media.alt}`);
     const overlay = document.createElement("div");

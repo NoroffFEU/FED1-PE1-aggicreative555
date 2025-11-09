@@ -10,6 +10,8 @@ export function adminNav() {
   const logoContainer = document.createElement("a");
   logoContainer.href = "./index.html";
   logoContainer.setAttribute("aria-label", "View home page");
+  logoContainer.style.width = "auto";
+  logoContainer.style.height = "auto";
   logoContainer.classList.add(
     "logo",
   );
@@ -18,6 +20,7 @@ export function adminNav() {
   logoImage.alt = "Vinterest Logo";
   logoImage.loading = "lazy";
   logoImage.style.width = "150px";
+  logoImage.style.height = "auto";
   logoContainer.appendChild(logoImage);
 
   const pcNav = document.createElement("nav");

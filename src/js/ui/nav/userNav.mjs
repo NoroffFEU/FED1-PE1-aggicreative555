@@ -8,6 +8,8 @@ export function userNav() {
   const logoContainer = document.createElement("a");
   logoContainer.href = "/index.html";
   logoContainer.setAttribute("aria-label", "View home page");
+  logoContainer.style.width = "auto";
+  logoContainer.style.height = "auto";
   logoContainer.classList.add(
     "logo",
   );
@@ -15,6 +17,7 @@ export function userNav() {
   logoImage.src = "/assets/logo/vinterst-logotype.svg";
   logoImage.alt = "Vinterest Logo";
   logoImage.style.width = "150px";
+  logoImage.style.height = "auto";
   logoContainer.appendChild(logoImage);
 
   const pcNav = document.createElement("nav");
