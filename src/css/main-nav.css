@@ -184,6 +184,7 @@ header {
 
 .footer {
     display: flex;
+    min-height: 200px;
     flex-direction: column ;
     gap: 2rem;
     align-items: center;

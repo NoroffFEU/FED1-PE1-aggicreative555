@@ -32,6 +32,7 @@ export function postIdTemplate(post) {
     pic.classList.add(
         "img"
     );
+    pic.loading = "lazy";
     pic.alt = `${post.media.alt || "Image relating to post"}`;
     pic.setAttribute("aria-label", `${post.media.alt}`);
     const overlay = document.createElement("div");

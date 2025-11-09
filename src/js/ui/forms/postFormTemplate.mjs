@@ -30,6 +30,7 @@ export function postFormTemplate({ isEdit = false, postData = {} } = {}) {
     const imgPreview = document.createElement("img");
     imgPreview.className = "img";
     imgPreview.alt = "Post image preview";
+    imgPreview.loading = "lazy";
     imgPreview.src = 
     postData.media?.url || "https://cdn.pixabay.com/photo/2020/08/31/16/39/ephemera-5532941_1280.jpg";
 
@@ -159,6 +160,7 @@ export function postFormTemplate({ isEdit = false, postData = {} } = {}) {
     const miniImgPreview = document.createElement("img");
     miniImgPreview.classList.add("img","pic-mini");
     miniImgPreview.alt = "Post image preview";
+    miniImgPreview.loading = "lazy"
     miniImgPreview.src = 
     postData.media?.url || "https://cdn.pixabay.com/photo/2020/08/31/16/39/ephemera-5532941_1280.jpg";
 

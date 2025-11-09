@@ -16,6 +16,7 @@ export function adminNav() {
   const logoImage = document.createElement("img");
   logoImage.src = "/assets/logo/vinterst-logotype.svg";
   logoImage.alt = "Vinterest Logo";
+  logoImage.loading = "lazy";
   logoImage.style.width = "150px";
   logoContainer.appendChild(logoImage);
 
