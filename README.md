@@ -1,8 +1,9 @@
 _Noroff Semester Project_
 
-<img width="1872" height="961" alt="image" src="" />
+<img width="988" height="972" alt="image" src="https://github.com/user-attachments/assets/8a6e4915-c655-4c86-ae7c-4466ee29338c" />
 
-# Vinterest | Blog website
+# ☎️ Vinterest | Blog website
+
 
 ## Description:
 
