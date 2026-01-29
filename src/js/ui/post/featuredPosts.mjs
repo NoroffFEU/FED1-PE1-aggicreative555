@@ -12,6 +12,7 @@ export async function renderFeaturedPosts() {
     const container = document.getElementById("postsContainer");
     if (!container) {
         console.error("No #postsContainer found in DOM");
+        return;
     }
 
     container.classList.add("post-wrapper");
